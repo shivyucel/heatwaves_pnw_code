@@ -1756,241 +1756,177 @@ display: none;
 <h1>Load Packages</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeSh0aWR5Y2Vuc3VzKVxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGBcbmBgYCJ9 -->
-<pre class="r"><code>```r
-library(tidycensus)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5Y2Vuc3VzKVxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidycensus)
 library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4yIOKUgOKUgOKclCBnZ3Bsb3QyIDMuNC4wICAgICAg4pyUIHB1cnJyICAgMS4wLjIgXG7inJQgdGliYmxlICAzLjEuOCAgICAgIOKclCBkcGx5ciAgIDEuMC4xMFxu4pyUIHRpZHlyICAgMS4zLjEgICAgICDinJQgc3RyaW5nciAxLjUuMCBcbuKclCByZWFkciAgIDIuMS4zICAgICAg4pyUIGZvcmNhdHMgMC41LjIgV2FybmluZzogcGFja2FnZSDigJh0aWR5cuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuMi4z4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG4ifQ== -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.2 ──✔ ggplot2 3.4.0      ✔ purrr   1.0.2 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.3.1      ✔ stringr 1.5.0 
+✔ readr   2.1.3      ✔ forcats 0.5.2 Warning: package ‘tidyr’ was built under R version 4.2.3── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzZilcbmBgYCJ9 -->
+<pre class="r"><code>library(sf)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlua2luZyB0byBHRU9TIDMuMTEuMCwgR0RBTCAzLjUuMywgUFJPSiA5LjEuMDsgc2ZfdXNlX3MyKCkgaXMgVFJVRVxuIn0= -->
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzalBsb3QpXG5gYGAifQ== -->
+<pre class="r"><code>library(sjPlot)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiI3JlZnVnZWVzd2VsY29tZVxuIn0= -->
+<pre><code>#refugeeswelcome</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzam1pc2MpXG5gYGAifQ== -->
+<pre class="r"><code>library(sjmisc)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYc2ptaXNj4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6cHVycnLigJk6XG5cbiAgICBpc19lbXB0eVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpZHly4oCZOlxuXG4gICAgcmVwbGFjZV9uYVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpYmJsZeKAmTpcblxuICAgIGFkZF9jYXNlXG4ifQ== -->
 <pre><code>
-&lt;!-- rnb-source-end --&gt;
+Attaching package: ‘sjmisc’
 
-&lt;!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4yIOKUgOKUgOKclCBnZ3Bsb3QyIDMuNC4wICAgICAg4pyUIHB1cnJyICAgMS4wLjIgXG7inJQgdGliYmxlICAzLjEuOCAgICAgIOKclCBkcGx5ciAgIDEuMC4xMFxu4pyUIHRpZHlyICAgMS4zLjEgICAgICDinJQgc3RyaW5nciAxLjUuMCBcbuKclCByZWFkciAgIDIuMS4zICAgICAg4pyUIGZvcmNhdHMgMC41LjIgV2FybmluZzogcGFja2FnZSDigJh0aWR5cuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuMi4z4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIHRpZHlyOjpleHRyYWN0KCkgbWFza3MgUjJNTHdpTjo6ZXh0cmFjdCgpXG7inJYgZHBseXI6OmZpbHRlcigpICBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= --&gt;
-</code></pre>
-<p>Registered S3 methods overwritten by ‘dbplyr’: method from
-print.tbl_lazy<br />
-print.tbl_sql<br />
-── Attaching packages
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-tidyverse 1.3.2 ──✔ ggplot2 3.4.0 ✔ purrr 1.0.2 ✔ tibble 3.1.8 ✔ dplyr
-1.0.10 ✔ tidyr 1.3.1 ✔ stringr 1.5.0 ✔ readr 2.1.3 ✔ forcats 0.5.2
-Warning: package ‘tidyr’ was built under R version 4.2.3── Conflicts
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-tidyverse_conflicts() ── ✖ tidyr::extract() masks R2MLwiN::extract() ✖
-dplyr::filter() masks stats::filter() ✖ dplyr::lag() masks
-stats::lag()</p>
+The following object is masked from ‘package:purrr’:
+
+    is_empty
+
+The following object is masked from ‘package:tidyr’:
+
+    replace_na
+
+The following object is masked from ‘package:tibble’:
+
+    add_case</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdGFyZ2F6ZXIpXG5gYGAifQ== -->
+<pre class="r"><code>library(stargazer)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5QbGVhc2UgY2l0ZSBhczogXG5cbiBIbGF2YWMsIE1hcmVrICgyMDIyKS4gc3RhcmdhemVyOiBXZWxsLUZvcm1hdHRlZCBSZWdyZXNzaW9uIGFuZCBTdW1tYXJ5IFN0YXRpc3RpY3MgVGFibGVzLlxuIFIgcGFja2FnZSB2ZXJzaW9uIDUuMi4zLiBodHRwczovL0NSQU4uUi1wcm9qZWN0Lm9yZy9wYWNrYWdlPXN0YXJnYXplciBcbiJ9 -->
 <pre><code>
+Please cite as: 
 
+ Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+ R package version 5.2.3. https://CRAN.R-project.org/package=stargazer </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsbWU0KVxuYGBgIn0= -->
+<pre class="r"><code>library(lme4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbldhcm5pbmc6IHBhY2thZ2Ug4oCYTWF0cml44oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gNC4yLjNcbkF0dGFjaGluZyBwYWNrYWdlOiDigJhNYXRyaXjigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpZHly4oCZOlxuXG4gICAgZXhwYW5kLCBwYWNrLCB1bnBhY2tcbiJ9 -->
+<pre><code>Loading required package: Matrix
+Warning: package ‘Matrix’ was built under R version 4.2.3
+Attaching package: ‘Matrix’
 
-&lt;!-- rnb-output-end --&gt;
+The following objects are masked from ‘package:tidyr’:
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzZilcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-library(sf)</code></pre>
+    expand, pack, unpack</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsbWVyVGVzdClcbmBgYCJ9 -->
+<pre class="r"><code>library(lmerTest)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYbG1lclRlc3TigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpsbWU04oCZOlxuXG4gICAgbG1lclxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgc3RlcFxuIn0= -->
 <pre><code>
-&lt;!-- rnb-source-end --&gt;
+Attaching package: ‘lmerTest’
 
-&lt;!-- rnb-output-begin eyJkYXRhIjoiTGlua2luZyB0byBHRU9TIDMuMTEuMCwgR0RBTCAzLjUuMywgUFJPSiA5LjEuMDsgc2ZfdXNlX3MyKCkgaXMgVFJVRVxuIn0= --&gt;
-</code></pre>
-<p>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is
-TRUE</p>
-<pre><code>
+The following object is masked from ‘package:lme4’:
 
+    lmer
 
-&lt;!-- rnb-output-end --&gt;
+The following object is masked from ‘package:stats’:
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzalBsb3QpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-library(sjPlot)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiSW5zdGFsbCBwYWNrYWdlIFxcc3RyZW5nZWphY2tlXFwgZnJvbSBHaXRIdWIgKGBkZXZ0b29sczo6aW5zdGFsbF9naXRodWIoXFxzdHJlbmdlamFja2Uvc3RyZW5nZWphY2tlXFwpYCkgdG8gbG9hZCBhbGwgc2otcGFja2FnZXMgYXQgb25jZSFcbiJ9 --&gt;
-</code></pre>
-<p>Install package  from GitHub
-(<code>devtools::install_github(\strengejacke/strengejacke\)</code>) to
-load all sj-packages at once!</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzam1pc2MpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-library(sjmisc)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYc2ptaXNj4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6cHVycnLigJk6XG5cbiAgICBpc19lbXB0eVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpZHly4oCZOlxuXG4gICAgcmVwbGFjZV9uYVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpYmJsZeKAmTpcblxuICAgIGFkZF9jYXNlXG4ifQ== --&gt;
-</code></pre>
-<p>Attaching package: ‘sjmisc’</p>
-<p>The following object is masked from ‘package:purrr’:</p>
-<pre><code>is_empty</code></pre>
-<p>The following object is masked from ‘package:tidyr’:</p>
-<pre><code>replace_na</code></pre>
-<p>The following object is masked from ‘package:tibble’:</p>
-<pre><code>add_case</code></pre>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzdGFyZ2F6ZXIpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-library(stargazer)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiXG5QbGVhc2UgY2l0ZSBhczogXG5cbiBIbGF2YWMsIE1hcmVrICgyMDIyKS4gc3RhcmdhemVyOiBXZWxsLUZvcm1hdHRlZCBSZWdyZXNzaW9uIGFuZCBTdW1tYXJ5IFN0YXRpc3RpY3MgVGFibGVzLlxuIFIgcGFja2FnZSB2ZXJzaW9uIDUuMi4zLiBodHRwczovL0NSQU4uUi1wcm9qZWN0Lm9yZy9wYWNrYWdlPXN0YXJnYXplciBcbiJ9 --&gt;
-</code></pre>
-<p>Please cite as:</p>
-<p>Hlavac, Marek (2022). stargazer: Well-Formatted Regression and
-Summary Statistics Tables. R package version 5.2.3. <a href="https://CRAN.R-project.org/package=stargazer" class="uri">https://CRAN.R-project.org/package=stargazer</a></p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShsbWU0KVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-library(lme4)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbldhcm5pbmc6IHBhY2thZ2Ug4oCYTWF0cml44oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gNC4yLjNcbkF0dGFjaGluZyBwYWNrYWdlOiDigJhNYXRyaXjigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnRpZHly4oCZOlxuXG4gICAgZXhwYW5kLCBwYWNrLCB1bnBhY2tcbiJ9 --&gt;
-</code></pre>
-<p>Loading required package: Matrix Warning: package ‘Matrix’ was built
-under R version 4.2.3 Attaching package: ‘Matrix’</p>
-<p>The following objects are masked from ‘package:tidyr’:</p>
-<pre><code>expand, pack, unpack</code></pre>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShsbWVyVGVzdClcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-library(lmerTest)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYbG1lclRlc3TigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpsbWU04oCZOlxuXG4gICAgbG1lclxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgc3RlcFxuIn0= --&gt;
-</code></pre>
-<p>Attaching package: ‘lmerTest’</p>
-<p>The following object is masked from ‘package:lme4’:</p>
-<pre><code>lmer</code></pre>
-<p>The following object is masked from ‘package:stats’:</p>
-<pre><code>step</code></pre>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzalBsb3QpXG5saWJyYXJ5KHNqbWlzYylcbmxpYnJhcnkoZ2dwbG90MilcblxubGlicmFyeShnZ2VmZmVjdHMpXG5saWJyYXJ5KHBlcmZvcm1hbmNlKVxubGlicmFyeShqdG9vbHMpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-library(sjPlot)
+    step</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzalBsb3QpXG5saWJyYXJ5KHNqbWlzYylcbmxpYnJhcnkoZ2dwbG90MilcblxubGlicmFyeShnZ2VmZmVjdHMpXG5saWJyYXJ5KHBlcmZvcm1hbmNlKVxubGlicmFyeShqdG9vbHMpXG5gYGAifQ== -->
+<pre class="r"><code>library(sjPlot)
 library(sjmisc)
 library(ggplot2)
 
 library(ggeffects)
 library(performance)
 library(jtools)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYanRvb2xz4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g4oCYcGFja2FnZTpzam1pc2PigJk6XG5cbiAgICAlbmluJSwgY2VudGVyXG4ifQ== -->
 <pre><code>
-&lt;!-- rnb-source-end --&gt;
+Attaching package: ‘jtools’
 
-&lt;!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYanRvb2xz4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g4oCYcGFja2FnZTpzam1pc2PigJk6XG5cbiAgICAlbmluJSwgY2VudGVyXG4ifQ== --&gt;
-</code></pre>
-<p>Attaching package: ‘jtools’</p>
-<p>The following objects are masked from ‘package:sjmisc’:</p>
-<pre><code>%nin%, center</code></pre>
-<pre><code>
+The following objects are masked from ‘package:sjmisc’:
 
+    %nin%, center</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShSMk1Md2lOKVxuYGBgIn0= -->
+<pre class="r"><code>library(R2MLwiN)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2RhdGEudGFibGUnOlxuICBtZXRob2QgICAgICAgICAgIGZyb21cbiAgcHJpbnQuZGF0YS50YWJsZSAgICAgXG5cblIyTUx3aU46IEEgcGFja2FnZSB0byBydW4gbW9kZWxzIGltcGxlbWVudGVkIGluIE1Md2lOIGZyb20gUlxuQ29weXJpZ2h0IDIwMTMtMjAyMiBaaGVuZ3poZW5nIFpoYW5nLCBDaHJpc3RvcGhlciBNLiBKLiBDaGFybHRvbiwgUmljaGFyZCBNLiBBLiBQYXJrZXIsIFdpbGxpYW0gSi4gQnJvd25lIGFuZCBHZW9yZ2UgTGVja2llXG5cblN1cHBvcnQgcHJvdmlkZWQgYnkgdGhlIEVjb25vbWljIGFuZCBTb2NpYWwgUmVzZWFyY2ggQ291bmNpbCAoRVNSQylcbihHcmFudHMgUkVTLTE0OS0yNS0xMDg0LCBSRVMtNTc2LTI1LTAwMzIgYW5kIEVTL0swMDcyNDYvMSlcblRvIGNpdGUgUjJNTHdpTiBpbiBwdWJsaWNhdGlvbnMgdXNlOlxuXG4gIFpoZW5nemhlbmcgWmhhbmcsIFJpY2hhcmQgTS4gQS4gUGFya2VyLCBDaHJpc3RvcGhlciBNLiBKLiBDaGFybHRvbiwgR2VvcmdlIExlY2tpZSwgV2lsbGlhbSBKLiBCcm93bmUgKDIwMTYpLiBSMk1Md2lOOiBBIFBhY2thZ2UgdG8gUnVuIE1Md2lOIGZyb21cbiAgd2l0aGluIFIuIEpvdXJuYWwgb2YgU3RhdGlzdGljYWwgU29mdHdhcmUsIDcyKDEwKSwgMS00My4gZG9pOjEwLjE4NjM3L2pzcy52MDcyLmkxMFxuXG5BIEJpYlRlWCBlbnRyeSBmb3IgTGFUZVggdXNlcnMgaXNcblxuICBAQXJ0aWNsZXssXG4gICAgdGl0bGUgPSB7e1IyTUx3aU59OiBBIFBhY2thZ2UgdG8gUnVuIHtNTHdpTn0gZnJvbSB3aXRoaW4ge1J9fSxcbiAgICBhdXRob3IgPSB7Wmhlbmd6aGVuZyBaaGFuZyBhbmQgUmljaGFyZCBNLiBBLiBQYXJrZXIgYW5kIENocmlzdG9waGVyIE0uIEouIENoYXJsdG9uIGFuZCBHZW9yZ2UgTGVja2llIGFuZCBXaWxsaWFtIEouIEJyb3duZX0sXG4gICAgam91cm5hbCA9IHtKb3VybmFsIG9mIFN0YXRpc3RpY2FsIFNvZnR3YXJlfSxcbiAgICB5ZWFyID0gezIwMTZ9LFxuICAgIHZvbHVtZSA9IHs3Mn0sXG4gICAgbnVtYmVyID0gezEwfSxcbiAgICBwYWdlcyA9IHsxLS00M30sXG4gICAgZG9pID0gezEwLjE4NjM3L2pzcy52MDcyLmkxMH0sXG4gIH1cblxuVGhlIE1Md2lOX3BhdGggb3B0aW9uIGlzIGN1cnJlbnRseSBzZXQgdG8gL29wdC9tbG4vbWxuc2NyaXB0XG5UbyBjaGFuZ2UgdGhpcyB1c2U6IG9wdGlvbnMoTUx3aU5fcGF0aD1cIjxwYXRoIHRvIE1Md2lOPlwiKVxuIn0= -->
+<pre><code>Registered S3 method overwritten by &#39;data.table&#39;:
+  method           from
+  print.data.table     
 
-&lt;!-- rnb-output-end --&gt;
+R2MLwiN: A package to run models implemented in MLwiN from R
+Copyright 2013-2022 Zhengzheng Zhang, Christopher M. J. Charlton, Richard M. A. Parker, William J. Browne and George Leckie
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShSMk1Md2lOKVxubGlicmFyeShsbXRlc3QpXG5gYGBcbmBgYCJ9 --&gt;
+Support provided by the Economic and Social Research Council (ESRC)
+(Grants RES-149-25-1084, RES-576-25-0032 and ES/K007246/1)
+To cite R2MLwiN in publications use:
 
-```r
-```r
-library(R2MLwiN)
-library(lmtest)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
+  Zhengzheng Zhang, Richard M. A. Parker, Christopher M. J. Charlton, George Leckie, William J. Browne (2016). R2MLwiN: A Package to Run MLwiN from
+  within R. Journal of Statistical Software, 72(10), 1-43. doi:10.18637/jss.v072.i10
 
-&lt;!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB6b29cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmHpvb+KAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6YmFzZeKAmTpcblxuICAgIGFzLkRhdGUsIGFzLkRhdGUubnVtZXJpY1xuIn0= --&gt;
-</code></pre>
-<p>Loading required package: zoo</p>
-<p>Attaching package: ‘zoo’</p>
-<p>The following objects are masked from ‘package:base’:</p>
-<pre><code>as.Date, as.Date.numeric</code></pre>
-<pre><code>
+A BibTeX entry for LaTeX users is
 
+  @Article{,
+    title = {{R2MLwiN}: A Package to Run {MLwiN} from within {R}},
+    author = {Zhengzheng Zhang and Richard M. A. Parker and Christopher M. J. Charlton and George Leckie and William J. Browne},
+    journal = {Journal of Statistical Software},
+    year = {2016},
+    volume = {72},
+    number = {10},
+    pages = {1--43},
+    doi = {10.18637/jss.v072.i10},
+  }
 
-&lt;!-- rnb-output-end --&gt;
+The MLwiN_path option is currently set to /opt/mln/mlnscript
+To change this use: options(MLwiN_path=&quot;&lt;path to MLwiN&gt;&quot;)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsbXRlc3QpXG5gYGAifQ== -->
+<pre class="r"><code>library(lmtest)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB6b29cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmHpvb+KAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6YmFzZeKAmTpcblxuICAgIGFzLkRhdGUsIGFzLkRhdGUubnVtZXJpY1xuIn0= -->
+<pre><code>Loading required package: zoo
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyMgQ2hhbmdlIHBhdGggdG8gTUx3aU4gZXhlY3V0YWJsZSBhcyBhcHByb3ByaWF0ZTpcbm9wdGlvbnMoTUx3aU5fcGF0aD1cXC9Vc2Vycy9zaGl2eXVjZWwvRG9jdW1lbnRzL3Byb2plY3RzL0RQaGlsL0NvZGVfRGF0YS9tbHdpbi9tbG5zY3JpcHRcXClcbmBgYFxuYGBgIn0= --&gt;
+Attaching package: ‘zoo’
 
-```r
-```r
-## Change path to MLwiN executable as appropriate:
-options(MLwiN_path=\/Users/shivyucel/Documents/projects/DPhil/Code_Data/mlwin/mlnscript\)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
+The following objects are masked from ‘package:base’:
 
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-# Load/Prepare Data
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyB2MTIgaXMgZnVsbCBtb2RlbCB2YXJpYWJsZXNcbiN2MTcgaXMgbmV3IGRlbW9ncmFwaGljICsgcG9wZGVuc1xubW9iX3ZhcnMgPC0gc3RfcmVhZChcXC9Vc2Vycy9zaGl2eXVjZWwvRG9jdW1lbnRzL3Byb2plY3RzL0RQaGlsL0NvZGVfRGF0YS9kYXRhL21vYmlsaXR5X2hlYXQvZmluYWxfbXVsdGl2YXJpYXRlX2NsZWFuXzkwLmNzdlxcKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-# v12 is full model variables
+    as.Date, as.Date.numeric</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgQ2hhbmdlIHBhdGggdG8gTUx3aU4gZXhlY3V0YWJsZSBhcyBhcHByb3ByaWF0ZTpcbm9wdGlvbnMoTUx3aU5fcGF0aD1cIi9Vc2Vycy9zaGl2eXVjZWwvRG9jdW1lbnRzL3Byb2plY3RzL0RQaGlsL0NvZGVfRGF0YS9tbHdpbi9tbG5zY3JpcHRcIilcbmBgYCJ9 -->
+<pre class="r"><code>## Change path to MLwiN executable as appropriate:
+options(MLwiN_path=&quot;/Users/shivyucel/Documents/projects/DPhil/Code_Data/mlwin/mlnscript&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="loadprepare-data" class="section level1">
+<h1>Load/Prepare Data</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB2MTIgaXMgZnVsbCBtb2RlbCB2YXJpYWJsZXNcbiN2MTcgaXMgbmV3IGRlbW9ncmFwaGljICsgcG9wZGVuc1xubW9iX3ZhcnMgPC0gc3RfcmVhZChcIi9Vc2Vycy9zaGl2eXVjZWwvRG9jdW1lbnRzL3Byb2plY3RzL0RQaGlsL0NvZGVfRGF0YS9kYXRhL21vYmlsaXR5X2hlYXQvZmluYWxfbXVsdGl2YXJpYXRlX2NsZWFuXzkwLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code># v12 is full model variables
 #v17 is new demographic + popdens
-mob_vars &lt;- st_read(\/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90.csv\)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiUmVhZGluZyBsYXllciBgZmluYWxfbXVsdGl2YXJpYXRlX2NsZWFuXzkwJyBmcm9tIGRhdGEgc291cmNlIGAvVXNlcnMvc2hpdnl1Y2VsL0RvY3VtZW50cy9wcm9qZWN0cy9EUGhpbC9Db2RlX0RhdGEvZGF0YS9tb2JpbGl0eV9oZWF0L2ZpbmFsX211bHRpdmFyaWF0ZV9jbGVhbl85MC5jc3YnIHVzaW5nIGRyaXZlciBgQ1NWJ1xuV2FybmluZzogbm8gc2ltcGxlIGZlYXR1cmUgZ2VvbWV0cmllcyBwcmVzZW50OiByZXR1cm5pbmcgYSBkYXRhLmZyYW1lIG9yIHRibF9kZlxuIn0= --&gt;
-</code></pre>
-<p>Reading layer
-<code>final_multivariate_clean_90&#39; from data source</code>/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90.csv’
-using driver `CSV’ Warning: no simple feature geometries present:
-returning a data.frame or tbl_df</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI3NldCB1cCBkZXBlbmRlbnQgdmFyaWFibGVzXG5tb2JfdmFycyRyZXNpZGVudGlhbF9kaWZmZXJlbmNlIDwtIGFzLm51bWVyaWMobW9iX3ZhcnMkcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHdvcmtwbGFjZXNfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJHdvcmtwbGFjZXNfZGlmZmVyZW5jZSlcbm1vYl92YXJzJGdyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJGdyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHBhcmtzX2RpZmZlcmVuY2UgPC0gYXMubnVtZXJpYyhtb2JfdmFycyRwYXJrc19kaWZmZXJlbmNlKVxubW9iX3ZhcnMkcmV0YWlsX2RpZmZlcmVuY2UgPC0gYXMubnVtZXJpYyhtb2JfdmFycyRyZXRhaWxfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHRyYW5zaXRfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRyYW5zaXRfZGlmZmVyZW5jZSlcblxuXG4jc2V0IHVwIGluZGVwZW5kZW50IHZhcmlhYmxlc1xuXG4jbGV2ZWwgMSB2YXJpYWJsZXNcbm1vYl92YXJzJGhlYXRfdGVtcF9jZW50ZXJlZCA8LSBhcy5udW1lcmljKG1vYl92YXJzJGhlYXRfdGVtcF9jZW50ZXJlZClcbm1vYl92YXJzJHRlbXBfZGlmZiA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRlbXBfZGlmZilcblxubW9iX3ZhcnMkc3RhZ2VfZnJhYyA8LSBhcy5udW1lcmljKG1vYl92YXJzJHN0YWdlX2ZyYWMpIC8gMTAwXG5tb2JfdmFycyR3ZWVrZW5kIDwtIGFzLmZhY3Rvcihtb2JfdmFycyR3ZWVrZW5kKVxuXG4jbGV2ZWwgMiB2YXJpYWJsZXNcbm1vYl92YXJzJGZpcnN0X2FubnVhbF9odyA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkZmlyc3RfYW5udWFsX2h3KVxubW9iX3ZhcnMkanVuZV9odyA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkanVuZV9odylcblxuXG5tb2JfdmFycyRoZWF0d2F2ZV9kdXIgPC0gYXMuZmFjdG9yKG1vYl92YXJzJGhlYXR3YXZlX2R1cilcbm1vYl92YXJzJHllYXIgPC0gYXMuZmFjdG9yKG1vYl92YXJzJHllYXIpXG5cblxuI2xldmVsIDMgdmFyaWFibGVzXG5tb2JfdmFycyR0ZW1wZXJhdHVyZV8ybV93aW50ZXIgPC0gYXMubnVtZXJpYyhtb2JfdmFycyR0ZW1wZXJhdHVyZV8ybV93aW50ZXIpIC0gNFxubW9iX3ZhcnMkc3RhdGUgPC0gYXMuZmFjdG9yKG1vYl92YXJzJHN0YXRlKVxubW9iX3ZhcnMkc3RhdGUgPC0gcmVsZXZlbChmYWN0b3IobW9iX3ZhcnMkc3RhdGUpLCBcXENhbGlmb3JuaWFcXClcbm1vYl92YXJzJGNvYXN0X2JpbmFyeSA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkY29hc3RfYmluYXJ5KVxubW9iX3ZhcnMkdGVtcGVyYXR1cmVfMm1faGVhdCA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRlbXBlcmF0dXJlXzJtX2hlYXQpXG5tb2JfdmFycyRpbmNvbWVfZGVjIDwtIGFzLm51bWVyaWMobW9iX3ZhcnMkaW5jb21lX2RlYylcblxubW9iX3ZhcnMkb3ZlcjY1X2RlYyA8LSAgYXMubnVtZXJpYyhtb2JfdmFycyRvdmVyNjVfZGVjKVxubW9iX3ZhcnMkcG9wZGVuc19kZWMgPC0gIGFzLm51bWVyaWMobW9iX3ZhcnMkcG9wZGVuc19kZWMpXG5tb2JfdmFycyRub253aGl0ZV9kZWMgPC0gIGFzLm51bWVyaWMobW9iX3ZhcnMkbm9ud2hpdGVfZGVjKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-#set up dependent variables
+mob_vars &lt;- st_read(&quot;/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVhZGluZyBsYXllciBgZmluYWxfbXVsdGl2YXJpYXRlX2NsZWFuXzkwJyBmcm9tIGRhdGEgc291cmNlIGAvVXNlcnMvc2hpdnl1Y2VsL0RvY3VtZW50cy9wcm9qZWN0cy9EUGhpbC9Db2RlX0RhdGEvZGF0YS9tb2JpbGl0eV9oZWF0L2ZpbmFsX211bHRpdmFyaWF0ZV9jbGVhbl85MC5jc3YnIHVzaW5nIGRyaXZlciBgQ1NWJ1xuIn0= -->
+<pre><code>Reading layer `final_multivariate_clean_90&#39; from data source `/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90.csv&#39; using driver `CSV&#39;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogbm8gc2ltcGxlIGZlYXR1cmUgZ2VvbWV0cmllcyBwcmVzZW50OiByZXR1cm5pbmcgYSBkYXRhLmZyYW1lIG9yIHRibF9kZlxuIn0= -->
+<pre><code>Warning: no simple feature geometries present: returning a data.frame or tbl_df</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3NldCB1cCBkZXBlbmRlbnQgdmFyaWFibGVzXG5tb2JfdmFycyRyZXNpZGVudGlhbF9kaWZmZXJlbmNlIDwtIGFzLm51bWVyaWMobW9iX3ZhcnMkcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHdvcmtwbGFjZXNfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJHdvcmtwbGFjZXNfZGlmZmVyZW5jZSlcbm1vYl92YXJzJGdyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJGdyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHBhcmtzX2RpZmZlcmVuY2UgPC0gYXMubnVtZXJpYyhtb2JfdmFycyRwYXJrc19kaWZmZXJlbmNlKVxubW9iX3ZhcnMkcmV0YWlsX2RpZmZlcmVuY2UgPC0gYXMubnVtZXJpYyhtb2JfdmFycyRyZXRhaWxfZGlmZmVyZW5jZSlcbm1vYl92YXJzJHRyYW5zaXRfZGlmZmVyZW5jZSA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRyYW5zaXRfZGlmZmVyZW5jZSlcblxuXG4jc2V0IHVwIGluZGVwZW5kZW50IHZhcmlhYmxlc1xuXG4jbGV2ZWwgMSB2YXJpYWJsZXNcbm1vYl92YXJzJGhlYXRfdGVtcF9jZW50ZXJlZCA8LSBhcy5udW1lcmljKG1vYl92YXJzJGhlYXRfdGVtcF9jZW50ZXJlZClcbm1vYl92YXJzJHRlbXBfZGlmZiA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRlbXBfZGlmZilcblxubW9iX3ZhcnMkc3RhZ2VfZnJhYyA8LSBhcy5udW1lcmljKG1vYl92YXJzJHN0YWdlX2ZyYWMpIC8gMTAwXG5tb2JfdmFycyR3ZWVrZW5kIDwtIGFzLmZhY3Rvcihtb2JfdmFycyR3ZWVrZW5kKVxuXG4jbGV2ZWwgMiB2YXJpYWJsZXNcbm1vYl92YXJzJGZpcnN0X2FubnVhbF9odyA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkZmlyc3RfYW5udWFsX2h3KVxubW9iX3ZhcnMkanVuZV9odyA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkanVuZV9odylcblxuXG5tb2JfdmFycyRoZWF0d2F2ZV9kdXIgPC0gYXMuZmFjdG9yKG1vYl92YXJzJGhlYXR3YXZlX2R1cilcbm1vYl92YXJzJHllYXIgPC0gYXMuZmFjdG9yKG1vYl92YXJzJHllYXIpXG5cblxuI2xldmVsIDMgdmFyaWFibGVzXG5tb2JfdmFycyR0ZW1wZXJhdHVyZV8ybV93aW50ZXIgPC0gYXMubnVtZXJpYyhtb2JfdmFycyR0ZW1wZXJhdHVyZV8ybV93aW50ZXIpIC0gNFxubW9iX3ZhcnMkc3RhdGUgPC0gYXMuZmFjdG9yKG1vYl92YXJzJHN0YXRlKVxubW9iX3ZhcnMkc3RhdGUgPC0gcmVsZXZlbChmYWN0b3IobW9iX3ZhcnMkc3RhdGUpLCBcIkNhbGlmb3JuaWFcIilcbm1vYl92YXJzJGNvYXN0X2JpbmFyeSA8LSBhcy5mYWN0b3IobW9iX3ZhcnMkY29hc3RfYmluYXJ5KVxubW9iX3ZhcnMkdGVtcGVyYXR1cmVfMm1faGVhdCA8LSBhcy5udW1lcmljKG1vYl92YXJzJHRlbXBlcmF0dXJlXzJtX2hlYXQpXG5tb2JfdmFycyRpbmNvbWVfZGVjIDwtIGFzLm51bWVyaWMobW9iX3ZhcnMkaW5jb21lX2RlYylcblxubW9iX3ZhcnMkb3ZlcjY1X2RlYyA8LSAgYXMubnVtZXJpYyhtb2JfdmFycyRvdmVyNjVfZGVjKVxubW9iX3ZhcnMkcG9wZGVuc19kZWMgPC0gIGFzLm51bWVyaWMobW9iX3ZhcnMkcG9wZGVuc19kZWMpXG5tb2JfdmFycyRub253aGl0ZV9kZWMgPC0gIGFzLm51bWVyaWMobW9iX3ZhcnMkbm9ud2hpdGVfZGVjKVxuYGBgIn0= -->
+<pre class="r"><code>#set up dependent variables
 mob_vars$residential_difference &lt;- as.numeric(mob_vars$residential_difference)
 mob_vars$workplaces_difference &lt;- as.numeric(mob_vars$workplaces_difference)
 mob_vars$grocery_pharmacy_difference &lt;- as.numeric(mob_vars$grocery_pharmacy_difference)
@@ -2020,7 +1956,7 @@ mob_vars$year &lt;- as.factor(mob_vars$year)
 #level 3 variables
 mob_vars$temperature_2m_winter &lt;- as.numeric(mob_vars$temperature_2m_winter) - 4
 mob_vars$state &lt;- as.factor(mob_vars$state)
-mob_vars$state &lt;- relevel(factor(mob_vars$state), \California\)
+mob_vars$state &lt;- relevel(factor(mob_vars$state), &quot;California&quot;)
 mob_vars$coast_binary &lt;- as.factor(mob_vars$coast_binary)
 mob_vars$temperature_2m_heat &lt;- as.numeric(mob_vars$temperature_2m_heat)
 mob_vars$income_dec &lt;- as.numeric(mob_vars$income_dec)
@@ -2028,28 +1964,16 @@ mob_vars$income_dec &lt;- as.numeric(mob_vars$income_dec)
 mob_vars$over65_dec &lt;-  as.numeric(mob_vars$over65_dec)
 mob_vars$popdens_dec &lt;-  as.numeric(mob_vars$popdens_dec)
 mob_vars$nonwhite_dec &lt;-  as.numeric(mob_vars$nonwhite_dec)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-# Unconditional Means
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3VtbWFyeShtb2RlbF8yNilcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="unconditional-means" class="section level1">
+<h1>Unconditional Means</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3VtbWFyeShtb2RlbF8yNilcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
 summary(model_26)</code></pre>
 <pre><code>
 &lt;!-- rnb-source-end --&gt;
@@ -2418,7 +2342,7 @@ cov_Intercept_retail_difference_Intercept_parks_difference 30.82437
 &lt;!-- rnb-chunk-begin --&gt;
 
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5tb2RlbF8yNiA8LSBydW5NTHdpTihjKHJlc2lkZW50aWFsX2RpZmZlcmVuY2UsIHdvcmtwbGFjZXNfZGlmZmVyZW5jZSwgdHJhbnNpdF9kaWZmZXJlbmNlLCBncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UsIHJldGFpbF9kaWZmZXJlbmNlLCBwYXJrc19kaWZmZXJlbmNlKSB+IDEgXG4gICAgICAgICAgICAgICAgICAgICsgaGVhdF90ZW1wX2NlbnRlcmVkKnN0YXRlICsgdGVtcF9kaWZmICsgc3RhZ2VfZnJhYyAgKyB3ZWVrZW5kIFxuICAgICAgICAgICAgICAgICAgICArIGZhY3Rvcih5ZWFyKSArIGZhY3RvcihoZWF0d2F2ZV9kdXIpICsgZmFjdG9yKGp1bmVfaHcpXG4gICAgICAgICAgICAgICAgICAgICsgZmFjdG9yKGNvYXN0X2JpbmFyeSkgKyAgdGVtcGVyYXR1cmVfMm1fd2ludGVyOnN0YXRlICsgcG9wZGVuc19kZWMgKyBpbmNvbWVfZGVjICsgb3ZlcjY1X2RlYyArIG5vbndoaXRlX2RlYyBcbiAgICAgICAgICAgICAgICAgICAgKyAgICgxIHwgbG9jYXRpb24pICsgKCAxfCBoZWF0X0lEKSArICgxfGluZGV4KSwgXG4gICAgICAgICAgICAgICAgICAgIGRhdGEgPSBtb2JfdmFycywgRCA9IFwiTXVsdGl2YXJpYXRlIE5vcm1hbFwiLCBlc3RvcHRpb25zID0gbGlzdChzb3J0LmZvcmNlPVRSVUUsIHJlc2kuc3RvcmU9VFJVRSwgbWF4aXRlciA9IDMwKSlcblxuYGBgIn0= --&gt;
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5tb2RlbF8yNiA8LSBydW5NTHdpTihjKHJlc2lkZW50aWFsX2RpZmZlcmVuY2UsIHdvcmtwbGFjZXNfZGlmZmVyZW5jZSwgdHJhbnNpdF9kaWZmZXJlbmNlLCBncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UsIHJldGFpbF9kaWZmZXJlbmNlLCBwYXJrc19kaWZmZXJlbmNlKSB+IDEgXG4gICAgICAgICAgICAgICAgICAgICsgaGVhdF90ZW1wX2NlbnRlcmVkKnN0YXRlICsgdGVtcF9kaWZmICsgc3RhZ2VfZnJhYyAgKyB3ZWVrZW5kIFxuICAgICAgICAgICAgICAgICAgICArIGZhY3Rvcih5ZWFyKSArIGZhY3RvcihoZWF0d2F2ZV9kdXIpICsgZmFjdG9yKGp1bmVfaHcpXG4gICAgICAgICAgICAgICAgICAgICsgZmFjdG9yKGNvYXN0X2JpbmFyeSkgKyAgdGVtcGVyYXR1cmVfMm1fd2ludGVyOnN0YXRlICsgcG9wZGVuc19kZWMgKyBpbmNvbWVfZGVjICsgb3ZlcjY1X2RlYyArIG5vbndoaXRlX2RlYyBcbiAgICAgICAgICAgICAgICAgICAgKyAgICgxIHwgbG9jYXRpb24pICsgKCAxfCBoZWF0X0lEKSArICgxfGluZGV4KSwgXG4gICAgICAgICAgICAgICAgICAgIGRhdGEgPSBtb2JfdmFycywgRCA9IFwiTXVsdGl2YXJpYXRlIE5vcm1hbFwiLCBlc3RvcHRpb25zID0gbGlzdChzb3J0LmZvcmNlPVRSVUUsIHJlc2kuc3RvcmU9VFJVRSwgbWF4aXRlciA9IDMwKSlcbmBgYCJ9 --&gt;
 
 ```r
 
@@ -2427,24 +2351,292 @@ model_26 &lt;- runMLwiN(c(residential_difference, workplaces_difference, transit
                     + factor(year) + factor(heatwave_dur) + factor(june_hw)
                     + factor(coast_binary) +  temperature_2m_winter:state + popdens_dec + income_dec + over65_dec + nonwhite_dec 
                     +   (1 | location) + ( 1| heat_ID) + (1|index), 
-                    data = mob_vars, D = &quot;Multivariate Normal&quot;, estoptions = list(sort.force=TRUE, resi.store=TRUE, maxiter = 30))
-</code></pre>
+                    data = mob_vars, D = &quot;Multivariate Normal&quot;, estoptions = list(sort.force=TRUE, resi.store=TRUE, maxiter = 30))</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiL25vZ3VpIG9wdGlvbiBpZ25vcmVkXG5FQ0hPICAgIDBcblxuXG5FY2hvaW5nIGlzIE9OXG5CQVRDIDFcblxuQmF0Y2ggbW9kZSBpcyBPTlxuTUFYSSAyXG5TVEFSXG5pdGVyYXRpb24gMFxuaXRlcmF0aW9uIDFcblxuQ29udmVyZ2VuY2Ugbm90IGFjaGlldmVkXG5UT0xFIDJcbk1BWEkgMzBcbk5FWFRcbml0ZXJhdGlvbiAyXG5pdGVyYXRpb24gM1xuaXRlcmF0aW9uIDRcbml0ZXJhdGlvbiA1XG5pdGVyYXRpb24gNlxuaXRlcmF0aW9uIDdcbml0ZXJhdGlvbiA4XG5pdGVyYXRpb24gOVxuXG5Db252ZXJnZW5jZSBhY2hpZXZlZFxuRUNITyAwXG5FeGVjdXRpb24gY29tcGxldGVkXG4ifQ== -->
+<pre><code>/nogui option ignored
+ECHO    0
+
+
+Echoing is ON
+BATC 1
+
+Batch mode is ON
+MAXI 2
+STAR
+iteration 0
+iteration 1
+
+Convergence not achieved
+TOLE 2
+MAXI 30
+NEXT
+iteration 2
+iteration 3
+iteration 4
+iteration 5
+iteration 6
+iteration 7
+iteration 8
+iteration 9
+
+Convergence achieved
+ECHO 0
+Execution completed</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zdW1tYXJ5KG1vZGVsXzI2KVxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zdW1tYXJ5KG1vZGVsXzI2KVxuYGBgIn0= -->
 <pre class="r"><code>
-summary(model_26)
-</code></pre>
+summary(model_26)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4tKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0gXG5NTHdpTiAodmVyc2lvbjogdW5rbm93biBvciA+My4wNikgIG11bHRpbGV2ZWwgbW9kZWwgKE11bHRpdmFyaWF0ZSBOb3JtYWwpIFxuICAgICAgICAgICAgTiBtaW4gICAgICBtZWFuIG1heCBOX2NvbXBsZXRlIG1pbl9jb21wbGV0ZSBtZWFuX2NvbXBsZXRlIG1heF9jb21wbGV0ZVxubG9jYXRpb24gIDE1MCAgIDkgNDkuMjIwMDAwICA2NyAgICAgICAgMTUwICAgICAgICAgICAgOSAgICAgNDkuMjIwMDAwICAgICAgICAgICA2N1xuaGVhdF9JRCAgMjAzMyAgIDEgIDMuNjMxNTc5ICAxMiAgICAgICAyMDMzICAgICAgICAgICAgMSAgICAgIDMuNjMxNTc5ICAgICAgICAgICAxMlxuRXN0aW1hdGlvbiBhbGdvcml0aG06ICBJR0xTICAgICAgICBFbGFwc2VkIHRpbWUgOiAyNDguNzVzIFxuTnVtYmVyIG9mIG9iczogIDczODMgKGZyb20gdG90YWwgNzM4MykgICAgICAgIFRoZSBtb2RlbCBjb252ZXJnZWQgYWZ0ZXIgMTAgaXRlcmF0aW9ucy5cbkxvZyBsaWtlbGlob29kOiAgICAgIC05NDA5Mi4yIFxuRGV2aWFuY2Ugc3RhdGlzdGljOiAgMTg4MTg0LjQgXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gXG5UaGUgbW9kZWwgZm9ybXVsYTpcbmMocmVzaWRlbnRpYWxfZGlmZmVyZW5jZSwgd29ya3BsYWNlc19kaWZmZXJlbmNlLCB0cmFuc2l0X2RpZmZlcmVuY2UsIFxuICAgIGdyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSwgcmV0YWlsX2RpZmZlcmVuY2UsIHBhcmtzX2RpZmZlcmVuY2UpIH4gXG4gICAgMSArIGhlYXRfdGVtcF9jZW50ZXJlZCAqIHN0YXRlICsgdGVtcF9kaWZmICsgc3RhZ2VfZnJhYyArIFxuICAgICAgICB3ZWVrZW5kICsgZmFjdG9yKHllYXIpICsgZmFjdG9yKGhlYXR3YXZlX2R1cikgKyBmYWN0b3IoanVuZV9odykgKyBcbiAgICAgICAgZmFjdG9yKGNvYXN0X2JpbmFyeSkgKyB0ZW1wZXJhdHVyZV8ybV93aW50ZXI6c3RhdGUgKyBcbiAgICAgICAgcG9wZGVuc19kZWMgKyBpbmNvbWVfZGVjICsgb3ZlcjY1X2RlYyArIG5vbndoaXRlX2RlYyArIFxuICAgICAgICAoMSB8IGxvY2F0aW9uKSArICgxIHwgaGVhdF9JRCkgKyAoMSB8IGluZGV4KVxuTGV2ZWwgMzogbG9jYXRpb24gICAgIExldmVsIDI6IGhlYXRfSUQgICAgIExldmVsIDE6IGluZGV4ICAgICAgXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gXG5UaGUgZml4ZWQgcGFydCBlc3RpbWF0ZXM6ICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ29lZi4gICBTdGQuIEVyci4gICAgICAgeiAgICBQcig+fHp8KSAgICAgICAgIFs5NSUgQ29uZi4gICBJbnRlcnZhbF0gXG5JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjc5MDIyICAgICAwLjIwMjMzICAgLTMuOTEgICA5LjQwMmUtMDUgICAqKiogICAgIC0xLjE4Njc5ICAgIC0wLjM5MzY1IFxuSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMS40NDAyNSAgICAgMC4zOTgxNiAgICAzLjYyICAgMC4wMDAyOTc3ICAgKioqICAgICAgMC42NTk4OCAgICAgMi4yMjA2MiBcbkludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIuNDkxNDggICAgIDEuNDA5MDIgICAgMS43NyAgICAgMC4wNzcwMiAgIC4gICAgICAgLTAuMjcwMTUgICAgIDUuMjUzMTEgXG5JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLjEwMjM0ICAgICAwLjg5Mjk0ICAgIDEuMjMgICAgICAgMC4yMTcgICAgICAgICAgIC0wLjY0Nzc5ICAgICAyLjg1MjQ3IFxuSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4yODQzOSAgICAgMC44NjEwNyAgICAwLjMzICAgICAgMC43NDEyICAgICAgICAgICAtMS40MDMyOCAgICAgMS45NzIwNiBcbkludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDQuNTU0NzcgICAgIDQuODgyNTAgICAgMC45MyAgICAgIDAuMzUwOSAgICAgICAgICAgLTUuMDE0NzUgICAgMTQuMTI0MzAgXG5oZWF0X3RlbXBfY2VudGVyZWRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjA1ODM5ICAgICAwLjAxMjU3ICAgIDQuNjQgICAzLjQxOWUtMDYgICAqKiogICAgICAwLjAzMzc0ICAgICAwLjA4MzAzIFxuaGVhdF90ZW1wX2NlbnRlcmVkX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wNDY3MSAgICAgMC4wMjU5NSAgIC0xLjgwICAgICAwLjA3MTg1ICAgLiAgICAgICAtMC4wOTc1NyAgICAgMC4wMDQxNSBcbmhlYXRfdGVtcF9jZW50ZXJlZF90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMTk5NTQgICAgIDAuMDc2MzUgICAtMi42MSAgICAwLjAwODk2NSAgICoqICAgICAgLTAuMzQ5MTkgICAgLTAuMDQ5ODkgXG5oZWF0X3RlbXBfY2VudGVyZWRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjE1NTM4ICAgICAwLjA1MTE2ICAgLTMuMDQgICAgIDAuMDAyMzkgICAqKiAgICAgIC0wLjI1NTY2ICAgIC0wLjA1NTEwIFxuaGVhdF90ZW1wX2NlbnRlcmVkX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4xNTY3OSAgICAgMC4wNTA0NCAgIC0zLjExICAgICAwLjAwMTg4ICAgKiogICAgICAtMC4yNTU2NSAgICAtMC4wNTc5MyBcbmhlYXRfdGVtcF9jZW50ZXJlZF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTEuMDQ2MjMgICAgIDAuMjUyNjkgICAtNC4xNCAgIDMuNDY5ZS0wNSAgICoqKiAgICAgLTEuNTQxNTAgICAgLTAuNTUwOTYgXG5zdGF0ZUJyaXRpc2ggQ29sdW1iaWFfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAzMzIxICAgICAwLjE5OTUyICAgIDAuMTcgICAgICAwLjg2NzggICAgICAgICAgIC0wLjM1Nzg0ICAgICAwLjQyNDI3IFxuc3RhdGVCcml0aXNoIENvbHVtYmlhX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMi44MTA0MiAgICAgMC40MjM2NSAgIC02LjYzICAgMy4yNzFlLTExICAgKioqICAgICAtMy42NDA3NiAgICAtMS45ODAwOSBcbnN0YXRlQnJpdGlzaCBDb2x1bWJpYV90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDMuNDMyMDQgICAgIDEuMzY1MDQgICAgMi41MSAgICAgMC4wMTE5MyAgICogICAgICAgIDAuNzU2NjEgICAgIDYuMTA3NDYgXG5zdGF0ZUJyaXRpc2ggQ29sdW1iaWFfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICA0LjU0NzI3ICAgICAwLjg5MTc0ICAgIDUuMTAgICAzLjQwOWUtMDcgICAqKiogICAgICAyLjc5OTQ5ICAgICA2LjI5NTA1IFxuc3RhdGVCcml0aXNoIENvbHVtYmlhX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMy42MDMzMyAgICAgMC44NzgzMSAgICA0LjEwICAgNC4wODZlLTA1ICAgKioqICAgICAgMS44ODE4NiAgICAgNS4zMjQ3OSBcbnN0YXRlQnJpdGlzaCBDb2x1bWJpYV9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDkuOTM1MjMgICAgIDQuOTc0NDEgICAgMi4wMCAgICAgIDAuMDQ1OCAgICogICAgICAgIDAuMTg1NTcgICAgMTkuNjg0ODkgXG5zdGF0ZU9yZWdvbl9yZXNpZGVudGlhbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjM2MjYyICAgICAwLjA4OTY3ICAgIDQuMDQgICA1LjI1N2UtMDUgICAqKiogICAgICAwLjE4Njg3ICAgICAwLjUzODM3IFxuc3RhdGVPcmVnb25fd29ya3BsYWNlc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC44MzcwMSAgICAgMC4xNzczMCAgIC00LjcyICAgMi4zNDllLTA2ICAgKioqICAgICAtMS4xODQ1MiAgICAtMC40ODk1MCBcbnN0YXRlT3JlZ29uX3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuNjQyODYgICAgIDAuNjAzNjUgICAtMS4wNiAgICAgIDAuMjg2OSAgICAgICAgICAgLTEuODI1OTkgICAgIDAuNTQwMjggXG5zdGF0ZU9yZWdvbl9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjQ0NDc4ICAgICAwLjQxMDY4ICAgIDEuMDggICAgICAwLjI3ODggICAgICAgICAgIC0wLjM2MDEzICAgICAxLjI0OTY5IFxuc3RhdGVPcmVnb25fcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC45NzQ0MiAgICAgMC4zOTM3NSAgIC0yLjQ3ICAgICAwLjAxMzMzICAgKiAgICAgICAtMS43NDYxNCAgICAtMC4yMDI2OSBcbnN0YXRlT3JlZ29uX3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTMuODgzMzAgICAgIDIuMzc2MzAgICAtMS42MyAgICAgIDAuMTAyMiAgICAgICAgICAgLTguNTQwNzcgICAgIDAuNzc0MTcgXG5zdGF0ZVdhc2hpbmd0b25fcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjM4NDExICAgICAwLjA4Njk2ICAgIDQuNDIgICAgICAgMWUtMDUgICAqKiogICAgICAwLjIxMzY3ICAgICAwLjU1NDU0IFxuc3RhdGVXYXNoaW5ndG9uX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC45MjE5NSAgICAgMC4xODE5NyAgIC01LjA3ICAgIDQuMDVlLTA3ICAgKioqICAgICAtMS4yNzg1OSAgICAtMC41NjUzMCBcbnN0YXRlV2FzaGluZ3Rvbl90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuNTUyMzMgICAgIDAuNTk1OTEgICAtMC45MyAgICAgICAwLjM1NCAgICAgICAgICAgLTEuNzIwMjkgICAgIDAuNjE1NjIgXG5zdGF0ZVdhc2hpbmd0b25fZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjkyMDU2ICAgICAwLjQxMjA5ICAgIDIuMjMgICAgIDAuMDI1NDkgICAqICAgICAgICAwLjExMjg4ICAgICAxLjcyODI1IFxuc3RhdGVXYXNoaW5ndG9uX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4yMDAxNCAgICAgMC40MDQxMSAgICAwLjUwICAgICAgMC42MjA0ICAgICAgICAgICAtMC41OTE4OSAgICAgMC45OTIxOCBcbnN0YXRlV2FzaGluZ3Rvbl9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuODgwMDggICAgIDIuMjI0NDYgICAgMC44NSAgICAgICAwLjM5OCAgICAgICAgICAgLTIuNDc5NzcgICAgIDYuMjM5OTMgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVCcml0aXNoIENvbHVtYmlhX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgIC0wLjE0NTA2ICAgICAwLjAyMzI4ICAgLTYuMjMgICA0LjYzNGUtMTAgICAqKiogICAgIC0wLjE5MDY4ICAgIC0wLjA5OTQzIFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlQnJpdGlzaCBDb2x1bWJpYV93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAtMC4zMTY0MSAgICAgMC4wNDk0NCAgIC02LjQwICAgMS41NTNlLTEwICAgKioqICAgICAtMC40MTMzMCAgICAtMC4yMTk1MSBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZUJyaXRpc2ggQ29sdW1iaWFfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgLTAuMDQ3MDYgICAgIDAuMTU1NjYgICAtMC4zMCAgICAgIDAuNzYyNCAgICAgICAgICAgLTAuMzUyMTUgICAgIDAuMjU4MDQgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVCcml0aXNoIENvbHVtYmlhX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAwLjU2MjkzICAgICAwLjA4NzQ4ICAgIDYuNDMgICAxLjIzNmUtMTAgICAqKiogICAgICAwLjM5MTQ3ICAgICAwLjczNDM5IFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlQnJpdGlzaCBDb2x1bWJpYV9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgMC41NzczMCAgICAgMC4wODgxNyAgICA2LjU1ICAgNS44NTFlLTExICAgKioqICAgICAgMC40MDQ0OSAgICAgMC43NTAxMSBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZUJyaXRpc2ggQ29sdW1iaWFfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgLTAuMjUzNDcgICAgIDAuNTY5MTMgICAtMC40NSAgICAgIDAuNjU2MSAgICAgICAgICAgLTEuMzY4OTUgICAgIDAuODYyMDEgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVPcmVnb25fcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgIC0wLjA0Njg5ICAgICAwLjAyMjQ4ICAgLTIuMDkgICAgIDAuMDM2OTQgICAqICAgICAgIC0wLjA5MDk1ICAgIC0wLjAwMjg0IFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlT3JlZ29uX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAtMC4wODc2NSAgICAgMC4wNDYyMSAgIC0xLjkwICAgICAwLjA1Nzg4ICAgLiAgICAgICAtMC4xNzgyMiAgICAgMC4wMDI5MyBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZU9yZWdvbl90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMzM2NDYgICAgIDAuMTQ4OTAgICAtMi4yNiAgICAgMC4wMjM4NSAgICogICAgICAgLTAuNjI4MzAgICAgLTAuMDQ0NjIgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVPcmVnb25fZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgIC0wLjE0Mzc1ICAgICAwLjA5MTE4ICAgLTEuNTggICAgICAwLjExNDkgICAgICAgICAgIC0wLjMyMjQ2ICAgICAwLjAzNDk3IFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlT3JlZ29uX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4zMzI0MSAgICAgMC4wODk1NyAgIC0zLjcxICAgMC4wMDAyMDY0ICAgKioqICAgICAtMC41MDc5NyAgICAtMC4xNTY4NSBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZU9yZWdvbl9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMzA3MjkgICAgIDAuNDYxNjIgICAtMC42NyAgICAgIDAuNTA1NiAgICAgICAgICAgLTEuMjEyMDQgICAgIDAuNTk3NDYgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVXYXNoaW5ndG9uX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgIC0wLjAzMDk5ICAgICAwLjAxNjIxICAgLTEuOTEgICAgIDAuMDU1ODIgICAuICAgICAgIC0wLjA2Mjc1ICAgICAwLjAwMDc3IFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlV2FzaGluZ3Rvbl93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAtMC4xMjY2MSAgICAgMC4wMzM0MSAgIC0zLjc5ICAgMC4wMDAxNTEyICAgKioqICAgICAtMC4xOTIxMCAgICAtMC4wNjExMiBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZVdhc2hpbmd0b25fdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgLTAuMTA0NzEgICAgIDAuMTAwMzIgICAtMS4wNCAgICAgIDAuMjk2NiAgICAgICAgICAgLTAuMzAxMzQgICAgIDAuMDkxOTIgXG5oZWF0X3RlbXBfY2VudGVyZWQ6c3RhdGVXYXNoaW5ndG9uX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgIC0wLjAxMTUwICAgICAwLjA2OTMzICAgLTAuMTcgICAgICAwLjg2ODIgICAgICAgICAgIC0wLjE0NzM4ICAgICAwLjEyNDM3IFxuaGVhdF90ZW1wX2NlbnRlcmVkOnN0YXRlV2FzaGluZ3Rvbl9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgMC4wNjU2OSAgICAgMC4wNjc5NSAgICAwLjk3ICAgICAgMC4zMzM2ICAgICAgICAgICAtMC4wNjc0OCAgICAgMC4xOTg4NyBcbmhlYXRfdGVtcF9jZW50ZXJlZDpzdGF0ZVdhc2hpbmd0b25fcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgLTAuMDY4NzMgICAgIDAuMzc1MzUgICAtMC4xOCAgICAgIDAuODU0NyAgICAgICAgICAgLTAuODA0NDEgICAgIDAuNjY2OTQgXG50ZW1wX2RpZmZfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjA1MDEwICAgICAwLjAwNzQ0ICAgLTYuNzMgICAxLjY3OWUtMTEgICAqKiogICAgIC0wLjA2NDY5ICAgIC0wLjAzNTUxIFxudGVtcF9kaWZmX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4xMTY5NCAgICAgMC4wMTU0OSAgIC03LjU1ICAgNC4zNjNlLTE0ICAgKioqICAgICAtMC4xNDczMCAgICAtMC4wODY1OCBcbnRlbXBfZGlmZl90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuMTg4MDQgICAgIDAuMDQzMzMgICAgNC4zNCAgIDEuNDI3ZS0wNSAgICoqKiAgICAgIDAuMTAzMTEgICAgIDAuMjcyOTYgXG50ZW1wX2RpZmZfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjE1OTA4ICAgICAwLjAyNjYzICAgIDUuOTcgICAyLjMwOWUtMDkgICAqKiogICAgICAwLjEwNjg5ICAgICAwLjIxMTI3IFxudGVtcF9kaWZmX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4xNDM0NCAgICAgMC4wMjcxNiAgICA1LjI4ICAgMS4yODFlLTA3ICAgKioqICAgICAgMC4wOTAyMSAgICAgMC4xOTY2NyBcbnRlbXBfZGlmZl9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuODYxOTIgICAgIDAuMTQxMjMgICAxMy4xOCAgIDEuMDkxZS0zOSAgICoqKiAgICAgIDEuNTg1MTEgICAgIDIuMTM4NzIgXG5zdGFnZV9mcmFjX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjM5MDYzICAgICAwLjA2ODczICAgIDUuNjggICAxLjMxNmUtMDggICAqKiogICAgICAwLjI1NTk0ICAgICAwLjUyNTMzIFxuc3RhZ2VfZnJhY193b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC42OTEwOSAgICAgMC4xNDExNCAgIC00LjkwICAgIDkuNzZlLTA3ICAgKioqICAgICAtMC45Njc3MyAgICAtMC40MTQ0NiBcbnN0YWdlX2ZyYWNfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMTMxMzQgICAgIDAuNDA0OTIgICAtMC4zMiAgICAgIDAuNzQ1NyAgICAgICAgICAgLTAuOTI0OTcgICAgIDAuNjYyMjkgXG5zdGFnZV9mcmFjX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjAwNTQ5ICAgICAwLjIyNzgxICAgLTAuMDIgICAgICAwLjk4MDggICAgICAgICAgIC0wLjQ1MTk4ICAgICAwLjQ0MTAwIFxuc3RhZ2VfZnJhY19yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4zMTEzMyAgICAgMC4yMzc5NiAgICAxLjMxICAgICAgMC4xOTA4ICAgICAgICAgICAtMC4xNTUwNyAgICAgMC43Nzc3MyBcbnN0YWdlX2ZyYWNfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTguOTk5MjggICAgIDEuMjQ3ODAgICAtNy4yMSAgICA1LjUxZS0xMyAgICoqKiAgICAtMTEuNDQ0OTMgICAgLTYuNTUzNjMgXG53ZWVrZW5kMV9yZXNpZGVudGlhbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAyOTQ4ICAgICAwLjA0NzIzICAgIDAuNjIgICAgICAwLjUzMjUgICAgICAgICAgIC0wLjA2MzA5ICAgICAwLjEyMjA2IFxud2Vla2VuZDFfd29ya3BsYWNlc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4zNzczOCAgICAgMC4wOTI5OCAgICA0LjA2ICAgNC45MzZlLTA1ICAgKioqICAgICAgMC4xOTUxNCAgICAgMC41NTk2MiBcbndlZWtlbmQxX3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuMzU1MjkgICAgIDAuMjY5MTIgICAgMS4zMiAgICAgIDAuMTg2OCAgICAgICAgICAgLTAuMTcyMTcgICAgIDAuODgyNzUgXG53ZWVrZW5kMV9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjQ1NzM2ICAgICAwLjE1MjM0ICAgLTMuMDAgICAgIDAuMDAyNjggICAqKiAgICAgIC0wLjc1NTk1ICAgIC0wLjE1ODc4IFxud2Vla2VuZDFfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4yODYzNiAgICAgMC4xNTU5MSAgICAxLjg0ICAgICAwLjA2NjI0ICAgLiAgICAgICAtMC4wMTkyMSAgICAgMC41OTE5NCBcbndlZWtlbmQxX3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIuNjI1MDEgICAgIDAuODAyNzcgICAgMy4yNyAgICAwLjAwMTA3NiAgICoqICAgICAgIDEuMDUxNjEgICAgIDQuMTk4NDEgXG5mYWN0b3IoeWVhcikyMDIxX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjMxNzY0ICAgICAwLjA3NjUwICAgIDQuMTUgICAzLjI5MWUtMDUgICAqKiogICAgICAwLjE2NzcxICAgICAwLjQ2NzU4IFxuZmFjdG9yKHllYXIpMjAyMV93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4xMDA3NCAgICAgMC4xNTg1MyAgICAwLjY0ICAgICAgMC41MjUxICAgICAgICAgICAtMC4yMDk5NyAgICAgMC40MTE0NiBcbmZhY3Rvcih5ZWFyKTIwMjFfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMzAyOTIgICAgIDAuNDIwOTcgICAtMC43MiAgICAgIDAuNDcxOCAgICAgICAgICAgLTEuMTI4MDEgICAgIDAuNTIyMTcgXG5mYWN0b3IoeWVhcikyMDIxX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjc5MDYwICAgICAwLjMwOTIxICAgLTIuNTYgICAgIDAuMDEwNTYgICAqICAgICAgIC0xLjM5NjY0ICAgIC0wLjE4NDU3IFxuZmFjdG9yKHllYXIpMjAyMV9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC43NDY5NCAgICAgMC4zMDA1OSAgIC0yLjQ4ICAgICAwLjAxMjk2ICAgKiAgICAgICAtMS4zMzYwOCAgICAtMC4xNTc4MCBcbmZhY3Rvcih5ZWFyKTIwMjFfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTYuMjkwMDYgICAgIDEuNDk0NjcgICAtNC4yMSAgIDIuNTczZS0wNSAgICoqKiAgICAgLTkuMjE5NTYgICAgLTMuMzYwNTcgXG5mYWN0b3IoeWVhcikyMDIyX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjM0NDAxICAgICAwLjA3MzUzICAgLTQuNjggICAgMi44OWUtMDYgICAqKiogICAgIC0wLjQ4ODEzICAgIC0wLjE5OTkwIFxuZmFjdG9yKHllYXIpMjAyMl93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMS40Nzk0OSAgICAgMC4xNTQxMCAgICA5LjYwICAgNy45NDZlLTIyICAgKioqICAgICAgMS4xNzc0NSAgICAgMS43ODE1MyBcbmZhY3Rvcih5ZWFyKTIwMjJfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuNDQ0MjIgICAgIDAuNDEwMTIgICAgMS4wOCAgICAgIDAuMjc4NyAgICAgICAgICAgLTAuMzU5NjEgICAgIDEuMjQ4MDUgXG5mYWN0b3IoeWVhcikyMDIyX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjQyNTM1ICAgICAwLjI5OTUyICAgLTEuNDIgICAgICAwLjE1NTYgICAgICAgICAgIC0xLjAxMjQwICAgICAwLjE2MTcwIFxuZmFjdG9yKHllYXIpMjAyMl9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wMTg3MSAgICAgMC4yOTEyOSAgIC0wLjA2ICAgICAgMC45NDg4ICAgICAgICAgICAtMC41ODk2MiAgICAgMC41NTIxOSBcbmZhY3Rvcih5ZWFyKTIwMjJfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTMuNDU0MjcgICAgIDEuNDU4MTggICAtMi4zNyAgICAgMC4wMTc4NCAgICogICAgICAgLTYuMzEyMjUgICAgLTAuNTk2MjkgXG5mYWN0b3IoaGVhdHdhdmVfZHVyKT49NSBkYXlzX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAwLjEyMzI3ICAgICAwLjA2MTMzICAgIDIuMDEgICAgIDAuMDQ0NDUgICAqICAgICAgICAwLjAwMzA2ICAgICAwLjI0MzQ3IFxuZmFjdG9yKGhlYXR3YXZlX2R1cik+PTUgZGF5c193b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAtMC42Mzc5MSAgICAgMC4xMjgwOSAgIC00Ljk4ICAgNi4zNTVlLTA3ICAgKioqICAgICAtMC44ODg5NiAgICAtMC4zODY4NSBcbmZhY3RvcihoZWF0d2F2ZV9kdXIpPj01IGRheXNfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuNzQ4NDggICAgIDAuMzM4NjkgICAtMi4yMSAgICAgMC4wMjcxMSAgICogICAgICAgLTEuNDEyMzAgICAgLTAuMDg0NjUgXG5mYWN0b3IoaGVhdHdhdmVfZHVyKT49NSBkYXlzX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAwLjk5OTE1ICAgICAwLjI1NTI0ICAgIDMuOTEgICA5LjA1NmUtMDUgICAqKiogICAgICAwLjQ5ODg5ICAgICAxLjQ5OTQxIFxuZmFjdG9yKGhlYXR3YXZlX2R1cik+PTUgZGF5c19yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC40ODQ4OSAgICAgMC4yNDU4NSAgICAxLjk3ICAgICAwLjA0ODU3ICAgKiAgICAgICAgMC4wMDMwNCAgICAgMC45NjY3NSBcbmZhY3RvcihoZWF0d2F2ZV9kdXIpPj01IGRheXNfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTMuMDkwMDcgICAgIDEuMjE5MDUgICAtMi41MyAgICAgMC4wMTEyNSAgICogICAgICAgLTUuNDc5MzcgICAgLTAuNzAwNzcgXG5mYWN0b3IoanVuZV9odykxX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjI3OTgwICAgICAwLjA4ODI3ICAgLTMuMTcgICAgMC4wMDE1MjUgICAqKiAgICAgIC0wLjQ1MjgwICAgIC0wLjEwNjc5IFxuZmFjdG9yKGp1bmVfaHcpMV93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC44MTk3OSAgICAgMC4xODM3NSAgIC00LjQ2ICAgOC4xNDNlLTA2ICAgKioqICAgICAtMS4xNzk5NCAgICAtMC40NTk2NSBcbmZhY3RvcihqdW5lX2h3KTFfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuMzAzMzcgICAgIDAuNDczMTMgICAgMC42NCAgICAgIDAuNTIxNCAgICAgICAgICAgLTAuNjIzOTUgICAgIDEuMjMwNzAgXG5mYWN0b3IoanVuZV9odykxX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjA4MzM0ICAgICAwLjM0NjM0ICAgIDAuMjQgICAgICAwLjgwOTggICAgICAgICAgIC0wLjU5NTQ4ICAgICAwLjc2MjE2IFxuZmFjdG9yKGp1bmVfaHcpMV9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC40MDI3MCAgICAgMC4zNDEyOSAgICAxLjE4ICAgICAgIDAuMjM4ICAgICAgICAgICAtMC4yNjYyMiAgICAgMS4wNzE2MiBcbmZhY3RvcihqdW5lX2h3KTFfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDQuMjQ0MTggICAgIDEuNjQ1MzcgICAgMi41OCAgICAwLjAwOTg5NSAgICoqICAgICAgIDEuMDE5MzEgICAgIDcuNDY5MDUgXG5mYWN0b3IoY29hc3RfYmluYXJ5KTFfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjM0MjM2ICAgICAwLjA4NDA1ICAgLTQuMDcgICA0LjYzMmUtMDUgICAqKiogICAgIC0wLjUwNzA4ICAgIC0wLjE3NzYzIFxuZmFjdG9yKGNvYXN0X2JpbmFyeSkxX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC40NTUyNSAgICAgMC4xODMzNyAgIC0yLjQ4ICAgICAwLjAxMzA0ICAgKiAgICAgICAtMC44MTQ2NSAgICAtMC4wOTU4NiBcbmZhY3Rvcihjb2FzdF9iaW5hcnkpMV90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuMzUwNTQgICAgIDAuNTcxNzMgICAgMC42MSAgICAgIDAuNTM5OCAgICAgICAgICAgLTAuNzcwMDIgICAgIDEuNDcxMTAgXG5mYWN0b3IoY29hc3RfYmluYXJ5KTFfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAxLjI0NTg0ICAgICAwLjM4MzgwICAgIDMuMjUgICAgIDAuMDAxMTcgICAqKiAgICAgICAwLjQ5MzYwICAgICAxLjk5ODA4IFxuZmFjdG9yKGNvYXN0X2JpbmFyeSkxX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMS40NTg5OCAgICAgMC4zNzk1MSAgICAzLjg0ICAgMC4wMDAxMjA5ICAgKioqICAgICAgMC43MTUxNSAgICAgMi4yMDI4MSBcbmZhY3Rvcihjb2FzdF9iaW5hcnkpMV9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcuODIxMDIgICAgIDEuOTA3MDYgICAgNC4xMCAgIDQuMTEyZS0wNSAgICoqKiAgICAgIDQuMDgzMjUgICAgMTEuNTU4ODAgXG5zdGF0ZUJyaXRpc2ggQ29sdW1iaWE6dGVtcGVyYXR1cmVfMm1fd2ludGVyX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAwLjAzODUwICAgICAwLjAxNzk2ICAgIDIuMTQgICAgIDAuMDMyMDMgICAqICAgICAgICAwLjAwMzMxICAgICAwLjA3MzcwIFxuc3RhdGVCcml0aXNoIENvbHVtYmlhOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgMC4xOTIzNyAgICAgMC4wMzY1MiAgICA1LjI3ICAgMS4zODFlLTA3ICAgKioqICAgICAgMC4xMjA4MCAgICAgMC4yNjM5NSBcbnN0YXRlQnJpdGlzaCBDb2x1bWJpYTp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgIDAuMzM3ODEgICAgIDAuMTMzMDggICAgMi41NCAgICAgMC4wMTExNCAgICogICAgICAgIDAuMDc2OTggICAgIDAuNTk4NjUgXG5zdGF0ZUJyaXRpc2ggQ29sdW1iaWE6dGVtcGVyYXR1cmVfMm1fd2ludGVyX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgIC0wLjAyNTcyICAgICAwLjA4MTkzICAgLTAuMzEgICAgICAwLjc1MzUgICAgICAgICAgIC0wLjE4NjI5ICAgICAwLjEzNDg1IFxuc3RhdGVCcml0aXNoIENvbHVtYmlhOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAtMC4xMzYwMiAgICAgMC4wNzk3MyAgIC0xLjcxICAgICAwLjA4Nzk5ICAgLiAgICAgICAtMC4yOTIyOCAgICAgMC4wMjAyNCBcbnN0YXRlQnJpdGlzaCBDb2x1bWJpYTp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgLTEuNDY3NjcgICAgIDAuNTc1ODEgICAtMi41NSAgICAgMC4wMTA4MSAgICogICAgICAgLTIuNTk2MjMgICAgLTAuMzM5MTEgXG5zdGF0ZU9yZWdvbjp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgIC0wLjAwNTU2ICAgICAwLjAyODIxICAgLTAuMjAgICAgICAwLjg0MzkgICAgICAgICAgIC0wLjA2MDg2ICAgICAwLjA0OTc0IFxuc3RhdGVPcmVnb246dGVtcGVyYXR1cmVfMm1fd2ludGVyX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAtMC4wMDYwMSAgICAgMC4wNDY5MSAgIC0wLjEzICAgICAgMC44OTgxICAgICAgICAgICAtMC4wOTc5NiAgICAgMC4wODU5NCBcbnN0YXRlT3JlZ29uOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgLTAuMTE3MDcgICAgIDAuMTg4NzkgICAtMC42MiAgICAgIDAuNTM1MiAgICAgICAgICAgLTAuNDg3MDkgICAgIDAuMjUyOTQgXG5zdGF0ZU9yZWdvbjp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAwLjExMDE5ICAgICAwLjEyNzc1ICAgIDAuODYgICAgICAwLjM4ODQgICAgICAgICAgIC0wLjE0MDE5ICAgICAwLjM2MDU3IFxuc3RhdGVPcmVnb246dGVtcGVyYXR1cmVfMm1fd2ludGVyX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgMC4xMTQ3OSAgICAgMC4xMTg0MCAgICAwLjk3ICAgICAgMC4zMzIzICAgICAgICAgICAtMC4xMTcyOCAgICAgMC4zNDY4NSBcbnN0YXRlT3JlZ29uOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgIDAuNzczNzcgICAgIDAuOTE5MDggICAgMC44NCAgICAgIDAuMzk5OCAgICAgICAgICAgLTEuMDI3NTkgICAgIDIuNTc1MTMgXG5zdGF0ZVdhc2hpbmd0b246dGVtcGVyYXR1cmVfMm1fd2ludGVyX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgIC0wLjAyMjU0ICAgICAwLjAyMTQwICAgLTEuMDUgICAgICAwLjI5MjIgICAgICAgICAgIC0wLjA2NDQ4ICAgICAwLjAxOTQwIFxuc3RhdGVXYXNoaW5ndG9uOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgMC4wNzIwMCAgICAgMC4wNDQyMSAgICAxLjYzICAgICAgMC4xMDM0ICAgICAgICAgICAtMC4wMTQ2NCAgICAgMC4xNTg2NCBcbnN0YXRlV2FzaGluZ3Rvbjp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgLTAuMDkxMjAgICAgIDAuMTYyNTQgICAtMC41NiAgICAgIDAuNTc0NyAgICAgICAgICAgLTAuNDA5NzcgICAgIDAuMjI3MzcgXG5zdGF0ZVdhc2hpbmd0b246dGVtcGVyYXR1cmVfMm1fd2ludGVyX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAwLjI3MDg4ICAgICAwLjEwOTcwICAgIDIuNDcgICAgIDAuMDEzNTQgICAqICAgICAgICAwLjA1NTg3ICAgICAwLjQ4NTg5IFxuc3RhdGVXYXNoaW5ndG9uOnRlbXBlcmF0dXJlXzJtX3dpbnRlcl9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgMC4xOTUyNiAgICAgMC4xMDM2MSAgICAxLjg4ICAgICAgMC4wNTk1ICAgLiAgICAgICAtMC4wMDc4MiAgICAgMC4zOTgzNCBcbnN0YXRlV2FzaGluZ3Rvbjp0ZW1wZXJhdHVyZV8ybV93aW50ZXJfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgIDEuMjEyNDUgICAgIDAuNTY4NDUgICAgMi4xMyAgICAgMC4wMzI5MyAgICogICAgICAgIDAuMDk4MzEgICAgIDIuMzI2NTkgXG5wb3BkZW5zX2RlY19yZXNpZGVudGlhbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjA0NzQxICAgICAwLjAyMDYyICAgIDIuMzAgICAgICAwLjAyMTUgICAqICAgICAgICAwLjAwNjk5ICAgICAwLjA4NzgzIFxucG9wZGVuc19kZWNfd29ya3BsYWNlc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wNTc1NiAgICAgMC4wMzc2NiAgIC0xLjUzICAgICAgMC4xMjY0ICAgICAgICAgICAtMC4xMzEzNyAgICAgMC4wMTYyNSBcbnBvcGRlbnNfZGVjX3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMTk3NzcgICAgIDAuMTQwMjcgICAtMS40MSAgICAgIDAuMTU4NiAgICAgICAgICAgLTAuNDcyNzAgICAgIDAuMDc3MTYgXG5wb3BkZW5zX2RlY19ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjE2NDM0ICAgICAwLjA5MjU0ICAgLTEuNzggICAgIDAuMDc1NzQgICAuICAgICAgIC0wLjM0NTcxICAgICAwLjAxNzAzIFxucG9wZGVuc19kZWNfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wODIyNSAgICAgMC4wODY3NyAgIC0wLjk1ICAgICAgMC4zNDMyICAgICAgICAgICAtMC4yNTIzMSAgICAgMC4wODc4MSBcbnBvcGRlbnNfZGVjX3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTEuMjUyNzYgICAgIDAuNTEwNjAgICAtMi40NSAgICAgMC4wMTQxNSAgICogICAgICAgLTIuMjUzNTEgICAgLTAuMjUyMDEgXG5pbmNvbWVfZGVjX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAwODMzICAgICAwLjAxNDkzICAgIDAuNTYgICAgICAwLjU3NjkgICAgICAgICAgIC0wLjAyMDk0ICAgICAwLjAzNzYwIFxuaW5jb21lX2RlY193b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4wMTg5NCAgICAgMC4wMzA1NyAgICAwLjYyICAgICAgMC41MzU3ICAgICAgICAgICAtMC4wNDA5OCAgICAgMC4wNzg4NiBcbmluY29tZV9kZWNfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAuMDQwNjAgICAgIDAuMTE2MDkgICAgMC4zNSAgICAgIDAuNzI2NiAgICAgICAgICAgLTAuMTg2OTMgICAgIDAuMjY4MTIgXG5pbmNvbWVfZGVjX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAwMjY1ICAgICAwLjA3MTIxICAgIDAuMDQgICAgICAwLjk3MDMgICAgICAgICAgIC0wLjEzNjkxICAgICAwLjE0MjIyIFxuaW5jb21lX2RlY19yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4xMDU5MCAgICAgMC4wNjgxMiAgIC0xLjU1ICAgICAgICAwLjEyICAgICAgICAgICAtMC4yMzk0MCAgICAgMC4wMjc2MSBcbmluY29tZV9kZWNfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuNTY5MTMgICAgIDAuMzY2NzUgICAtMS41NSAgICAgIDAuMTIwNyAgICAgICAgICAgLTEuMjg3OTQgICAgIDAuMTQ5NjkgXG5vdmVyNjVfZGVjX3Jlc2lkZW50aWFsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjA1ODk0ICAgICAwLjAxNjQzICAgIDMuNTkgICAwLjAwMDMzNDkgICAqKiogICAgICAwLjAyNjczICAgICAwLjA5MTE1IFxub3ZlcjY1X2RlY193b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wMTI4NSAgICAgMC4wMzMxMCAgIC0wLjM5ICAgICAgMC42OTc5ICAgICAgICAgICAtMC4wNzc3MSAgICAgMC4wNTIwMiBcbm92ZXI2NV9kZWNfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMzU5NDggICAgIDAuMTI2MTUgICAtMi44NSAgICAwLjAwNDM3OSAgICoqICAgICAgLTAuNjA2NzQgICAgLTAuMTEyMjIgXG5vdmVyNjVfZGVjX2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjEwODQ2ICAgICAwLjA3NzkyICAgLTEuMzkgICAgICAwLjE2MzkgICAgICAgICAgIC0wLjI2MTE4ICAgICAwLjA0NDI1IFxub3ZlcjY1X2RlY19yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4xMTQ2NiAgICAgMC4wNzQ1NCAgIC0xLjU0ICAgICAgIDAuMTI0ICAgICAgICAgICAtMC4yNjA3NiAgICAgMC4wMzE0NCBcbm92ZXI2NV9kZWNfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuNDIxNDYgICAgIDAuNDI3NTMgICAtMC45OSAgICAgIDAuMzI0MiAgICAgICAgICAgLTEuMjU5NDEgICAgIDAuNDE2NDkgXG5ub253aGl0ZV9kZWNfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAwOTM1ICAgICAwLjAxNDk4ICAgIDAuNjIgICAgICAwLjUzMjcgICAgICAgICAgIC0wLjAyMDAyICAgICAwLjAzODcxIFxubm9ud2hpdGVfZGVjX3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4wNjE4NSAgICAgMC4wMzEwNCAgICAxLjk5ICAgICAgMC4wNDYzICAgKiAgICAgICAgMC4wMDEwMiAgICAgMC4xMjI2OCBcbm5vbndoaXRlX2RlY190cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMjE5MjcgICAgIDAuMTE5NjQgICAtMS44MyAgICAgMC4wNjY4NSAgIC4gICAgICAgLTAuNDUzNzcgICAgIDAuMDE1MjIgXG5ub253aGl0ZV9kZWNfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0wLjEyNjk5ICAgICAwLjA3Mzg4ICAgLTEuNzIgICAgIDAuMDg1NjQgICAuICAgICAgIC0wLjI3MTgwICAgICAwLjAxNzgxIFxubm9ud2hpdGVfZGVjX3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtMC4wMDc5MSAgICAgMC4wNjk4MiAgIC0wLjExICAgICAgMC45MDk4ICAgICAgICAgICAtMC4xNDQ3NSAgICAgMC4xMjg5MyBcbm5vbndoaXRlX2RlY19wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLTAuMTA5OTIgICAgIDAuNDUxNzQgICAtMC4yNCAgICAgIDAuODA3NyAgICAgICAgICAgLTAuOTk1MzMgICAgIDAuNzc1NDggXG5TaWduaWYuIGNvZGVzOiAgMCAnKioqJyAwLjAwMSAnKionIDAuMDEgJyonIDAuMDUgJy4nIDAuMSAnICcgMSAgXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gXG5UaGUgcmFuZG9tIHBhcnQgZXN0aW1hdGVzIGF0IHRoZSBsb2NhdGlvbiBsZXZlbDogXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvZWYuICAgU3RkLiBFcnIuIFxudmFyX0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC4wMDAwMCAgICAgMC4wMDAwMCBcbmNvdl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlICAgICAgICAgIDAuMDAwMDAgICAgIDAuMDAwMDAgXG52YXJfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjAwMDAwICAgICAwLjAwMDAwIFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgMC4wMDAwMCAgICAgMC4wMDAwMCBcbmNvdl9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlX0ludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgIDAuMDAwMDAgICAgIDAuMDAwMDAgXG52YXJfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLjU5NDY2ICAgICAwLjU2ODkyIFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgMC4wMDAwMCAgICAgMC4wMDAwMCBcbmNvdl9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgIDAuMDAwMDAgICAgIDAuMDAwMDAgXG5jb3ZfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZV9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAwLjc0MTI1ICAgICAwLjMyMDA4IFxudmFyX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC42ODM1MSAgICAgMC4yODM3NCBcbmNvdl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgIDAuMDAwMDAgICAgIDAuMDAwMDAgXG5jb3ZfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAwLjAwMDAwICAgICAwLjAwMDAwIFxuY292X0ludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2VfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgMC41Mjk2NiAgICAgMC4zMTA0MyBcbmNvdl9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlX0ludGVyY2VwdF9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgIDAuNzIyNDggICAgIDAuMjQ1MDggXG52YXJfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjY0MzA5ICAgICAwLjI2NTk0IFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgMC4wMDAwMCAgICAgMC4wMDAwMCBcbmNvdl9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgIDAuMDAwMDAgICAgIDAuMDAwMDAgXG5jb3ZfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAwLjU3OTU5ICAgICAxLjQ1OTc1IFxuY292X0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2VfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgMS4xNzc2MyAgICAgMS4xMDE4MCBcbmNvdl9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2VfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgIDEuMDcyNDggICAgIDEuMDc4MTggXG52YXJfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDE0LjUzNzgwICAgICA2LjUxODc1IFxuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIFxuVGhlIHJhbmRvbSBwYXJ0IGVzdGltYXRlcyBhdCB0aGUgaGVhdF9JRCBsZXZlbDogXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDb2VmLiAgIFN0ZC4gRXJyLiBcbnZhcl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwLjYwMzgxICAgICAwLjA0NTAyIFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF93b3JrcGxhY2VzX2RpZmZlcmVuY2UgICAgICAgICAgLTAuMDk4MTQgICAgIDAuMDcyMzkgXG52YXJfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMy4yOTAwMiAgICAgMC4yMTUzNSBcbmNvdl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAwLjE5OTQzICAgICAwLjE4MTY3IFxuY292X0ludGVyY2VwdF93b3JrcGxhY2VzX2RpZmZlcmVuY2VfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgIDAuMDk0NzEgICAgIDAuNDA0NzIgXG52YXJfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxMi4xMDg4OSAgICAgMS4yNTQ3NCBcbmNvdl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgIC0wLjU5NDg4ICAgICAwLjEzNTQ0IFxuY292X0ludGVyY2VwdF93b3JrcGxhY2VzX2RpZmZlcmVuY2VfSW50ZXJjZXB0X2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZSAgICAgLTAuMzk4MDQgICAgIDAuMjk3NDMgXG5jb3ZfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZV9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgNS42MDQzMyAgICAgMC43NjU1MyBcbnZhcl9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEzLjMzMzM0ICAgICAwLjc3MzE0IFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgLTAuODIwMzEgICAgIDAuMTM1NTkgXG5jb3ZfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgMC41OTY2NiAgICAgMC4yODgxNiBcbmNvdl9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlX0ludGVyY2VwdF9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICA1Ljc1MjgwICAgICAwLjc3NTQ3IFxuY292X0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2VfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgIDkuNTc3ODYgICAgIDAuNjQwOTAgXG52YXJfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxMi4zOTU5NSAgICAgMC43NDU3MiBcbmNvdl9JbnRlcmNlcHRfcmVzaWRlbnRpYWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgIC0yLjI0MTA1ICAgICAwLjY0MzUzIFxuY292X0ludGVyY2VwdF93b3JrcGxhY2VzX2RpZmZlcmVuY2VfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgIDAuNDEzNzMgICAgIDEuNDIyODUgXG5jb3ZfSW50ZXJjZXB0X3RyYW5zaXRfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAyOS45NjMzNSAgICAgMy40MzcyMSBcbmNvdl9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgIDM1LjM4MTIwICAgICAyLjkwMDE0IFxuY292X0ludGVyY2VwdF9yZXRhaWxfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgNDAuNTE0NTcgICAgIDIuODg3NzYgXG52YXJfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwNy4wNjkxNiAgICAxNS45ODkyNiBcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBcblRoZSByYW5kb20gcGFydCBlc3RpbWF0ZXMgYXQgdGhlIGluZGV4IGxldmVsOiBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvZWYuICAgU3RkLiBFcnIuIFxudmFyX0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIuMTE3MzEgICAgIDAuMDQ1NzcgXG5jb3ZfSW50ZXJjZXB0X3Jlc2lkZW50aWFsX2RpZmZlcmVuY2VfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZSAgICAgICAgICAtMC4zMTY1MSAgICAgMC4wNzMwNyBcbnZhcl9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEwLjUzODE3ICAgICAwLjIwODM1IFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2UgICAgICAgICAgICAgLTIuMTEyNDAgICAgIDAuMTk5MjEgXG5jb3ZfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZV9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgMS4xMzQ3NSAgICAgMC40MzE0NSBcbnZhcl9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDUyLjcwMzkyICAgICAxLjM2Mzc5IFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgLTEuNTg4NzkgICAgIDAuMTEzMDMgXG5jb3ZfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZV9JbnRlcmNlcHRfZ3JvY2VyeV9waGFybWFjeV9kaWZmZXJlbmNlICAgICAtMi41MDcyOCAgICAgMC4yNDUxMyBcbmNvdl9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICA3LjA1MTUwICAgICAwLjYzOTgwIFxudmFyX0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMjIuMjU4OTggICAgIDAuNDk5NTEgXG5jb3ZfSW50ZXJjZXB0X3Jlc2lkZW50aWFsX2RpZmZlcmVuY2VfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAtMi4xMTg3MCAgICAgMC4xMjE3MSBcbmNvdl9JbnRlcmNlcHRfd29ya3BsYWNlc19kaWZmZXJlbmNlX0ludGVyY2VwdF9yZXRhaWxfZGlmZmVyZW5jZSAgICAgICAgICAgICAgIC0wLjIwMzc5ICAgICAwLjI1Mjg5IFxuY292X0ludGVyY2VwdF90cmFuc2l0X2RpZmZlcmVuY2VfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgMTMuMDU5OTEgICAgIDAuNzEwNDggXG5jb3ZfSW50ZXJjZXB0X2dyb2NlcnlfcGhhcm1hY3lfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAxMi4zNjExNSAgICAgMC40MjQ5MyBcbnZhcl9JbnRlcmNlcHRfcmV0YWlsX2RpZmZlcmVuY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDI3LjE2MTk5ICAgICAwLjU2NDg5IFxuY292X0ludGVyY2VwdF9yZXNpZGVudGlhbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgLTYuODc0MjkgICAgIDAuNjA3NjAgXG5jb3ZfSW50ZXJjZXB0X3dvcmtwbGFjZXNfZGlmZmVyZW5jZV9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAtNS45NTQ4MCAgICAgMS4zMjU5NiBcbmNvdl9JbnRlcmNlcHRfdHJhbnNpdF9kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICA3LjEwMjc1ICAgICAzLjE1ODcxIFxuY292X0ludGVyY2VwdF9ncm9jZXJ5X3BoYXJtYWN5X2RpZmZlcmVuY2VfSW50ZXJjZXB0X3BhcmtzX2RpZmZlcmVuY2UgICAgICAgICAgNDQuNTQ5NzAgICAgIDIuMDQ2MjYgXG5jb3ZfSW50ZXJjZXB0X3JldGFpbF9kaWZmZXJlbmNlX0ludGVyY2VwdF9wYXJrc19kaWZmZXJlbmNlICAgICAgICAgICAgICAgICAgICAzMC44MjQzNyAgICAgMi4xNTI0MyBcbnZhcl9JbnRlcmNlcHRfcGFya3NfZGlmZmVyZW5jZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgNDMzLjY3NTQwICAgIDEyLjM3OTExIFxuLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotKi0qLSotIFxuIn0= -->
+<pre><code>
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- 
+MLwiN (version: unknown or &gt;3.06)  multilevel model (Multivariate Normal) 
+            N min      mean max N_complete min_complete mean_complete max_complete
+location  150   9 49.220000  67        150            9     49.220000           67
+heat_ID  2033   1  3.631579  12       2033            1      3.631579           12
+Estimation algorithm:  IGLS        Elapsed time : 248.75s 
+Number of obs:  7383 (from total 7383)        The model converged after 10 iterations.
+Log likelihood:      -94092.2 
+Deviance statistic:  188184.4 
+--------------------------------------------------------------------------------------------------- 
+The model formula:
+c(residential_difference, workplaces_difference, transit_difference, 
+    grocery_pharmacy_difference, retail_difference, parks_difference) ~ 
+    1 + heat_temp_centered * state + temp_diff + stage_frac + 
+        weekend + factor(year) + factor(heatwave_dur) + factor(june_hw) + 
+        factor(coast_binary) + temperature_2m_winter:state + 
+        popdens_dec + income_dec + over65_dec + nonwhite_dec + 
+        (1 | location) + (1 | heat_ID) + (1 | index)
+Level 3: location     Level 2: heat_ID     Level 1: index      
+--------------------------------------------------------------------------------------------------- 
+The fixed part estimates:  
+                                                                             Coef.   Std. Err.       z    Pr(&gt;|z|)         [95% Conf.   Interval] 
+Intercept_residential_difference                                          -0.79022     0.20233   -3.91   9.402e-05   ***     -1.18679    -0.39365 
+Intercept_workplaces_difference                                            1.44025     0.39816    3.62   0.0002977   ***      0.65988     2.22062 
+Intercept_transit_difference                                               2.49148     1.40902    1.77     0.07702   .       -0.27015     5.25311 
+Intercept_grocery_pharmacy_difference                                      1.10234     0.89294    1.23       0.217           -0.64779     2.85247 
+Intercept_retail_difference                                                0.28439     0.86107    0.33      0.7412           -1.40328     1.97206 
+Intercept_parks_difference                                                 4.55477     4.88250    0.93      0.3509           -5.01475    14.12430 
+heat_temp_centered_residential_difference                                  0.05839     0.01257    4.64   3.419e-06   ***      0.03374     0.08303 
+heat_temp_centered_workplaces_difference                                  -0.04671     0.02595   -1.80     0.07185   .       -0.09757     0.00415 
+heat_temp_centered_transit_difference                                     -0.19954     0.07635   -2.61    0.008965   **      -0.34919    -0.04989 
+heat_temp_centered_grocery_pharmacy_difference                            -0.15538     0.05116   -3.04     0.00239   **      -0.25566    -0.05510 
+heat_temp_centered_retail_difference                                      -0.15679     0.05044   -3.11     0.00188   **      -0.25565    -0.05793 
+heat_temp_centered_parks_difference                                       -1.04623     0.25269   -4.14   3.469e-05   ***     -1.54150    -0.55096 
+stateBritish Columbia_residential_difference                               0.03321     0.19952    0.17      0.8678           -0.35784     0.42427 
+stateBritish Columbia_workplaces_difference                               -2.81042     0.42365   -6.63   3.271e-11   ***     -3.64076    -1.98009 
+stateBritish Columbia_transit_difference                                   3.43204     1.36504    2.51     0.01193   *        0.75661     6.10746 
+stateBritish Columbia_grocery_pharmacy_difference                          4.54727     0.89174    5.10   3.409e-07   ***      2.79949     6.29505 
+stateBritish Columbia_retail_difference                                    3.60333     0.87831    4.10   4.086e-05   ***      1.88186     5.32479 
+stateBritish Columbia_parks_difference                                     9.93523     4.97441    2.00      0.0458   *        0.18557    19.68489 
+stateOregon_residential_difference                                         0.36262     0.08967    4.04   5.257e-05   ***      0.18687     0.53837 
+stateOregon_workplaces_difference                                         -0.83701     0.17730   -4.72   2.349e-06   ***     -1.18452    -0.48950 
+stateOregon_transit_difference                                            -0.64286     0.60365   -1.06      0.2869           -1.82599     0.54028 
+stateOregon_grocery_pharmacy_difference                                    0.44478     0.41068    1.08      0.2788           -0.36013     1.24969 
+stateOregon_retail_difference                                             -0.97442     0.39375   -2.47     0.01333   *       -1.74614    -0.20269 
+stateOregon_parks_difference                                              -3.88330     2.37630   -1.63      0.1022           -8.54077     0.77417 
+stateWashington_residential_difference                                     0.38411     0.08696    4.42       1e-05   ***      0.21367     0.55454 
+stateWashington_workplaces_difference                                     -0.92195     0.18197   -5.07    4.05e-07   ***     -1.27859    -0.56530 
+stateWashington_transit_difference                                        -0.55233     0.59591   -0.93       0.354           -1.72029     0.61562 
+stateWashington_grocery_pharmacy_difference                                0.92056     0.41209    2.23     0.02549   *        0.11288     1.72825 
+stateWashington_retail_difference                                          0.20014     0.40411    0.50      0.6204           -0.59189     0.99218 
+stateWashington_parks_difference                                           1.88008     2.22446    0.85       0.398           -2.47977     6.23993 
+heat_temp_centered:stateBritish Columbia_residential_difference           -0.14506     0.02328   -6.23   4.634e-10   ***     -0.19068    -0.09943 
+heat_temp_centered:stateBritish Columbia_workplaces_difference            -0.31641     0.04944   -6.40   1.553e-10   ***     -0.41330    -0.21951 
+heat_temp_centered:stateBritish Columbia_transit_difference               -0.04706     0.15566   -0.30      0.7624           -0.35215     0.25804 
+heat_temp_centered:stateBritish Columbia_grocery_pharmacy_difference       0.56293     0.08748    6.43   1.236e-10   ***      0.39147     0.73439 
+heat_temp_centered:stateBritish Columbia_retail_difference                 0.57730     0.08817    6.55   5.851e-11   ***      0.40449     0.75011 
+heat_temp_centered:stateBritish Columbia_parks_difference                 -0.25347     0.56913   -0.45      0.6561           -1.36895     0.86201 
+heat_temp_centered:stateOregon_residential_difference                     -0.04689     0.02248   -2.09     0.03694   *       -0.09095    -0.00284 
+heat_temp_centered:stateOregon_workplaces_difference                      -0.08765     0.04621   -1.90     0.05788   .       -0.17822     0.00293 
+heat_temp_centered:stateOregon_transit_difference                         -0.33646     0.14890   -2.26     0.02385   *       -0.62830    -0.04462 
+heat_temp_centered:stateOregon_grocery_pharmacy_difference                -0.14375     0.09118   -1.58      0.1149           -0.32246     0.03497 
+heat_temp_centered:stateOregon_retail_difference                          -0.33241     0.08957   -3.71   0.0002064   ***     -0.50797    -0.15685 
+heat_temp_centered:stateOregon_parks_difference                           -0.30729     0.46162   -0.67      0.5056           -1.21204     0.59746 
+heat_temp_centered:stateWashington_residential_difference                 -0.03099     0.01621   -1.91     0.05582   .       -0.06275     0.00077 
+heat_temp_centered:stateWashington_workplaces_difference                  -0.12661     0.03341   -3.79   0.0001512   ***     -0.19210    -0.06112 
+heat_temp_centered:stateWashington_transit_difference                     -0.10471     0.10032   -1.04      0.2966           -0.30134     0.09192 
+heat_temp_centered:stateWashington_grocery_pharmacy_difference            -0.01150     0.06933   -0.17      0.8682           -0.14738     0.12437 
+heat_temp_centered:stateWashington_retail_difference                       0.06569     0.06795    0.97      0.3336           -0.06748     0.19887 
+heat_temp_centered:stateWashington_parks_difference                       -0.06873     0.37535   -0.18      0.8547           -0.80441     0.66694 
+temp_diff_residential_difference                                          -0.05010     0.00744   -6.73   1.679e-11   ***     -0.06469    -0.03551 
+temp_diff_workplaces_difference                                           -0.11694     0.01549   -7.55   4.363e-14   ***     -0.14730    -0.08658 
+temp_diff_transit_difference                                               0.18804     0.04333    4.34   1.427e-05   ***      0.10311     0.27296 
+temp_diff_grocery_pharmacy_difference                                      0.15908     0.02663    5.97   2.309e-09   ***      0.10689     0.21127 
+temp_diff_retail_difference                                                0.14344     0.02716    5.28   1.281e-07   ***      0.09021     0.19667 
+temp_diff_parks_difference                                                 1.86192     0.14123   13.18   1.091e-39   ***      1.58511     2.13872 
+stage_frac_residential_difference                                          0.39063     0.06873    5.68   1.316e-08   ***      0.25594     0.52533 
+stage_frac_workplaces_difference                                          -0.69109     0.14114   -4.90    9.76e-07   ***     -0.96773    -0.41446 
+stage_frac_transit_difference                                             -0.13134     0.40492   -0.32      0.7457           -0.92497     0.66229 
+stage_frac_grocery_pharmacy_difference                                    -0.00549     0.22781   -0.02      0.9808           -0.45198     0.44100 
+stage_frac_retail_difference                                               0.31133     0.23796    1.31      0.1908           -0.15507     0.77773 
+stage_frac_parks_difference                                               -8.99928     1.24780   -7.21    5.51e-13   ***    -11.44493    -6.55363 
+weekend1_residential_difference                                            0.02948     0.04723    0.62      0.5325           -0.06309     0.12206 
+weekend1_workplaces_difference                                             0.37738     0.09298    4.06   4.936e-05   ***      0.19514     0.55962 
+weekend1_transit_difference                                                0.35529     0.26912    1.32      0.1868           -0.17217     0.88275 
+weekend1_grocery_pharmacy_difference                                      -0.45736     0.15234   -3.00     0.00268   **      -0.75595    -0.15878 
+weekend1_retail_difference                                                 0.28636     0.15591    1.84     0.06624   .       -0.01921     0.59194 
+weekend1_parks_difference                                                  2.62501     0.80277    3.27    0.001076   **       1.05161     4.19841 
+factor(year)2021_residential_difference                                    0.31764     0.07650    4.15   3.291e-05   ***      0.16771     0.46758 
+factor(year)2021_workplaces_difference                                     0.10074     0.15853    0.64      0.5251           -0.20997     0.41146 
+factor(year)2021_transit_difference                                       -0.30292     0.42097   -0.72      0.4718           -1.12801     0.52217 
+factor(year)2021_grocery_pharmacy_difference                              -0.79060     0.30921   -2.56     0.01056   *       -1.39664    -0.18457 
+factor(year)2021_retail_difference                                        -0.74694     0.30059   -2.48     0.01296   *       -1.33608    -0.15780 
+factor(year)2021_parks_difference                                         -6.29006     1.49467   -4.21   2.573e-05   ***     -9.21956    -3.36057 
+factor(year)2022_residential_difference                                   -0.34401     0.07353   -4.68    2.89e-06   ***     -0.48813    -0.19990 
+factor(year)2022_workplaces_difference                                     1.47949     0.15410    9.60   7.946e-22   ***      1.17745     1.78153 
+factor(year)2022_transit_difference                                        0.44422     0.41012    1.08      0.2787           -0.35961     1.24805 
+factor(year)2022_grocery_pharmacy_difference                              -0.42535     0.29952   -1.42      0.1556           -1.01240     0.16170 
+factor(year)2022_retail_difference                                        -0.01871     0.29129   -0.06      0.9488           -0.58962     0.55219 
+factor(year)2022_parks_difference                                         -3.45427     1.45818   -2.37     0.01784   *       -6.31225    -0.59629 
+factor(heatwave_dur)&gt;=5 days_residential_difference                        0.12327     0.06133    2.01     0.04445   *        0.00306     0.24347 
+factor(heatwave_dur)&gt;=5 days_workplaces_difference                        -0.63791     0.12809   -4.98   6.355e-07   ***     -0.88896    -0.38685 
+factor(heatwave_dur)&gt;=5 days_transit_difference                           -0.74848     0.33869   -2.21     0.02711   *       -1.41230    -0.08465 
+factor(heatwave_dur)&gt;=5 days_grocery_pharmacy_difference                   0.99915     0.25524    3.91   9.056e-05   ***      0.49889     1.49941 
+factor(heatwave_dur)&gt;=5 days_retail_difference                             0.48489     0.24585    1.97     0.04857   *        0.00304     0.96675 
+factor(heatwave_dur)&gt;=5 days_parks_difference                             -3.09007     1.21905   -2.53     0.01125   *       -5.47937    -0.70077 
+factor(june_hw)1_residential_difference                                   -0.27980     0.08827   -3.17    0.001525   **      -0.45280    -0.10679 
+factor(june_hw)1_workplaces_difference                                    -0.81979     0.18375   -4.46   8.143e-06   ***     -1.17994    -0.45965 
+factor(june_hw)1_transit_difference                                        0.30337     0.47313    0.64      0.5214           -0.62395     1.23070 
+factor(june_hw)1_grocery_pharmacy_difference                               0.08334     0.34634    0.24      0.8098           -0.59548     0.76216 
+factor(june_hw)1_retail_difference                                         0.40270     0.34129    1.18       0.238           -0.26622     1.07162 
+factor(june_hw)1_parks_difference                                          4.24418     1.64537    2.58    0.009895   **       1.01931     7.46905 
+factor(coast_binary)1_residential_difference                              -0.34236     0.08405   -4.07   4.632e-05   ***     -0.50708    -0.17763 
+factor(coast_binary)1_workplaces_difference                               -0.45525     0.18337   -2.48     0.01304   *       -0.81465    -0.09586 
+factor(coast_binary)1_transit_difference                                   0.35054     0.57173    0.61      0.5398           -0.77002     1.47110 
+factor(coast_binary)1_grocery_pharmacy_difference                          1.24584     0.38380    3.25     0.00117   **       0.49360     1.99808 
+factor(coast_binary)1_retail_difference                                    1.45898     0.37951    3.84   0.0001209   ***      0.71515     2.20281 
+factor(coast_binary)1_parks_difference                                     7.82102     1.90706    4.10   4.112e-05   ***      4.08325    11.55880 
+stateBritish Columbia:temperature_2m_winter_residential_difference         0.03850     0.01796    2.14     0.03203   *        0.00331     0.07370 
+stateBritish Columbia:temperature_2m_winter_workplaces_difference          0.19237     0.03652    5.27   1.381e-07   ***      0.12080     0.26395 
+stateBritish Columbia:temperature_2m_winter_transit_difference             0.33781     0.13308    2.54     0.01114   *        0.07698     0.59865 
+stateBritish Columbia:temperature_2m_winter_grocery_pharmacy_difference   -0.02572     0.08193   -0.31      0.7535           -0.18629     0.13485 
+stateBritish Columbia:temperature_2m_winter_retail_difference             -0.13602     0.07973   -1.71     0.08799   .       -0.29228     0.02024 
+stateBritish Columbia:temperature_2m_winter_parks_difference              -1.46767     0.57581   -2.55     0.01081   *       -2.59623    -0.33911 
+stateOregon:temperature_2m_winter_residential_difference                  -0.00556     0.02821   -0.20      0.8439           -0.06086     0.04974 
+stateOregon:temperature_2m_winter_workplaces_difference                   -0.00601     0.04691   -0.13      0.8981           -0.09796     0.08594 
+stateOregon:temperature_2m_winter_transit_difference                      -0.11707     0.18879   -0.62      0.5352           -0.48709     0.25294 
+stateOregon:temperature_2m_winter_grocery_pharmacy_difference              0.11019     0.12775    0.86      0.3884           -0.14019     0.36057 
+stateOregon:temperature_2m_winter_retail_difference                        0.11479     0.11840    0.97      0.3323           -0.11728     0.34685 
+stateOregon:temperature_2m_winter_parks_difference                         0.77377     0.91908    0.84      0.3998           -1.02759     2.57513 
+stateWashington:temperature_2m_winter_residential_difference              -0.02254     0.02140   -1.05      0.2922           -0.06448     0.01940 
+stateWashington:temperature_2m_winter_workplaces_difference                0.07200     0.04421    1.63      0.1034           -0.01464     0.15864 
+stateWashington:temperature_2m_winter_transit_difference                  -0.09120     0.16254   -0.56      0.5747           -0.40977     0.22737 
+stateWashington:temperature_2m_winter_grocery_pharmacy_difference          0.27088     0.10970    2.47     0.01354   *        0.05587     0.48589 
+stateWashington:temperature_2m_winter_retail_difference                    0.19526     0.10361    1.88      0.0595   .       -0.00782     0.39834 
+stateWashington:temperature_2m_winter_parks_difference                     1.21245     0.56845    2.13     0.03293   *        0.09831     2.32659 
+popdens_dec_residential_difference                                         0.04741     0.02062    2.30      0.0215   *        0.00699     0.08783 
+popdens_dec_workplaces_difference                                         -0.05756     0.03766   -1.53      0.1264           -0.13137     0.01625 
+popdens_dec_transit_difference                                            -0.19777     0.14027   -1.41      0.1586           -0.47270     0.07716 
+popdens_dec_grocery_pharmacy_difference                                   -0.16434     0.09254   -1.78     0.07574   .       -0.34571     0.01703 
+popdens_dec_retail_difference                                             -0.08225     0.08677   -0.95      0.3432           -0.25231     0.08781 
+popdens_dec_parks_difference                                              -1.25276     0.51060   -2.45     0.01415   *       -2.25351    -0.25201 
+income_dec_residential_difference                                          0.00833     0.01493    0.56      0.5769           -0.02094     0.03760 
+income_dec_workplaces_difference                                           0.01894     0.03057    0.62      0.5357           -0.04098     0.07886 
+income_dec_transit_difference                                              0.04060     0.11609    0.35      0.7266           -0.18693     0.26812 
+income_dec_grocery_pharmacy_difference                                     0.00265     0.07121    0.04      0.9703           -0.13691     0.14222 
+income_dec_retail_difference                                              -0.10590     0.06812   -1.55        0.12           -0.23940     0.02761 
+income_dec_parks_difference                                               -0.56913     0.36675   -1.55      0.1207           -1.28794     0.14969 
+over65_dec_residential_difference                                          0.05894     0.01643    3.59   0.0003349   ***      0.02673     0.09115 
+over65_dec_workplaces_difference                                          -0.01285     0.03310   -0.39      0.6979           -0.07771     0.05202 
+over65_dec_transit_difference                                             -0.35948     0.12615   -2.85    0.004379   **      -0.60674    -0.11222 
+over65_dec_grocery_pharmacy_difference                                    -0.10846     0.07792   -1.39      0.1639           -0.26118     0.04425 
+over65_dec_retail_difference                                              -0.11466     0.07454   -1.54       0.124           -0.26076     0.03144 
+over65_dec_parks_difference                                               -0.42146     0.42753   -0.99      0.3242           -1.25941     0.41649 
+nonwhite_dec_residential_difference                                        0.00935     0.01498    0.62      0.5327           -0.02002     0.03871 
+nonwhite_dec_workplaces_difference                                         0.06185     0.03104    1.99      0.0463   *        0.00102     0.12268 
+nonwhite_dec_transit_difference                                           -0.21927     0.11964   -1.83     0.06685   .       -0.45377     0.01522 
+nonwhite_dec_grocery_pharmacy_difference                                  -0.12699     0.07388   -1.72     0.08564   .       -0.27180     0.01781 
+nonwhite_dec_retail_difference                                            -0.00791     0.06982   -0.11      0.9098           -0.14475     0.12893 
+nonwhite_dec_parks_difference                                             -0.10992     0.45174   -0.24      0.8077           -0.99533     0.77548 
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1  
+--------------------------------------------------------------------------------------------------- 
+The random part estimates at the location level: 
+                                                                                Coef.   Std. Err. 
+var_Intercept_residential_difference                                          0.00000     0.00000 
+cov_Intercept_residential_difference_Intercept_workplaces_difference          0.00000     0.00000 
+var_Intercept_workplaces_difference                                           0.00000     0.00000 
+cov_Intercept_residential_difference_Intercept_transit_difference             0.00000     0.00000 
+cov_Intercept_workplaces_difference_Intercept_transit_difference              0.00000     0.00000 
+var_Intercept_transit_difference                                              1.59466     0.56892 
+cov_Intercept_residential_difference_Intercept_grocery_pharmacy_difference    0.00000     0.00000 
+cov_Intercept_workplaces_difference_Intercept_grocery_pharmacy_difference     0.00000     0.00000 
+cov_Intercept_transit_difference_Intercept_grocery_pharmacy_difference        0.74125     0.32008 
+var_Intercept_grocery_pharmacy_difference                                     0.68351     0.28374 
+cov_Intercept_residential_difference_Intercept_retail_difference              0.00000     0.00000 
+cov_Intercept_workplaces_difference_Intercept_retail_difference               0.00000     0.00000 
+cov_Intercept_transit_difference_Intercept_retail_difference                  0.52966     0.31043 
+cov_Intercept_grocery_pharmacy_difference_Intercept_retail_difference         0.72248     0.24508 
+var_Intercept_retail_difference                                               0.64309     0.26594 
+cov_Intercept_residential_difference_Intercept_parks_difference               0.00000     0.00000 
+cov_Intercept_workplaces_difference_Intercept_parks_difference                0.00000     0.00000 
+cov_Intercept_transit_difference_Intercept_parks_difference                   0.57959     1.45975 
+cov_Intercept_grocery_pharmacy_difference_Intercept_parks_difference          1.17763     1.10180 
+cov_Intercept_retail_difference_Intercept_parks_difference                    1.07248     1.07818 
+var_Intercept_parks_difference                                               14.53780     6.51875 
+--------------------------------------------------------------------------------------------------- 
+The random part estimates at the heat_ID level: 
+                                                                                 Coef.   Std. Err. 
+var_Intercept_residential_difference                                           0.60381     0.04502 
+cov_Intercept_residential_difference_Intercept_workplaces_difference          -0.09814     0.07239 
+var_Intercept_workplaces_difference                                            3.29002     0.21535 
+cov_Intercept_residential_difference_Intercept_transit_difference              0.19943     0.18167 
+cov_Intercept_workplaces_difference_Intercept_transit_difference               0.09471     0.40472 
+var_Intercept_transit_difference                                              12.10889     1.25474 
+cov_Intercept_residential_difference_Intercept_grocery_pharmacy_difference    -0.59488     0.13544 
+cov_Intercept_workplaces_difference_Intercept_grocery_pharmacy_difference     -0.39804     0.29743 
+cov_Intercept_transit_difference_Intercept_grocery_pharmacy_difference         5.60433     0.76553 
+var_Intercept_grocery_pharmacy_difference                                     13.33334     0.77314 
+cov_Intercept_residential_difference_Intercept_retail_difference              -0.82031     0.13559 
+cov_Intercept_workplaces_difference_Intercept_retail_difference                0.59666     0.28816 
+cov_Intercept_transit_difference_Intercept_retail_difference                   5.75280     0.77547 
+cov_Intercept_grocery_pharmacy_difference_Intercept_retail_difference          9.57786     0.64090 
+var_Intercept_retail_difference                                               12.39595     0.74572 
+cov_Intercept_residential_difference_Intercept_parks_difference               -2.24105     0.64353 
+cov_Intercept_workplaces_difference_Intercept_parks_difference                 0.41373     1.42285 
+cov_Intercept_transit_difference_Intercept_parks_difference                   29.96335     3.43721 
+cov_Intercept_grocery_pharmacy_difference_Intercept_parks_difference          35.38120     2.90014 
+cov_Intercept_retail_difference_Intercept_parks_difference                    40.51457     2.88776 
+var_Intercept_parks_difference                                               207.06916    15.98926 
+--------------------------------------------------------------------------------------------------- 
+The random part estimates at the index level: 
+                                                                                 Coef.   Std. Err. 
+var_Intercept_residential_difference                                           2.11731     0.04577 
+cov_Intercept_residential_difference_Intercept_workplaces_difference          -0.31651     0.07307 
+var_Intercept_workplaces_difference                                           10.53817     0.20835 
+cov_Intercept_residential_difference_Intercept_transit_difference             -2.11240     0.19921 
+cov_Intercept_workplaces_difference_Intercept_transit_difference               1.13475     0.43145 
+var_Intercept_transit_difference                                              52.70392     1.36379 
+cov_Intercept_residential_difference_Intercept_grocery_pharmacy_difference    -1.58879     0.11303 
+cov_Intercept_workplaces_difference_Intercept_grocery_pharmacy_difference     -2.50728     0.24513 
+cov_Intercept_transit_difference_Intercept_grocery_pharmacy_difference         7.05150     0.63980 
+var_Intercept_grocery_pharmacy_difference                                     22.25898     0.49951 
+cov_Intercept_residential_difference_Intercept_retail_difference              -2.11870     0.12171 
+cov_Intercept_workplaces_difference_Intercept_retail_difference               -0.20379     0.25289 
+cov_Intercept_transit_difference_Intercept_retail_difference                  13.05991     0.71048 
+cov_Intercept_grocery_pharmacy_difference_Intercept_retail_difference         12.36115     0.42493 
+var_Intercept_retail_difference                                               27.16199     0.56489 
+cov_Intercept_residential_difference_Intercept_parks_difference               -6.87429     0.60760 
+cov_Intercept_workplaces_difference_Intercept_parks_difference                -5.95480     1.32596 
+cov_Intercept_transit_difference_Intercept_parks_difference                    7.10275     3.15871 
+cov_Intercept_grocery_pharmacy_difference_Intercept_parks_difference          44.54970     2.04626 
+cov_Intercept_retail_difference_Intercept_parks_difference                    30.82437     2.15243 
+var_Intercept_parks_difference                                               433.67540    12.37911 
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShtb2RlbF8yNilcblxuYGBgIn0= -->
-<pre class="r"><code>summary(model_26)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShtb2RlbF8yNilcbmBgYCJ9 -->
+<pre class="r"><code>summary(model_26)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gc3VtbWFyeShtb2RlbF8yNikgOiBvYmplY3QgJ21vZGVsXzI2JyBub3QgZm91bmRcbiJ9 -->
+<pre><code>Error in summary(model_26) : object &#39;model_26&#39; not found</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
