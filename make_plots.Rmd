@@ -1,0 +1,749 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+library(sf)
+library(sjPlot)
+library(sjmisc)
+library(stargazer)
+library(lme4)
+library(lmerTest)
+library(sjPlot)
+library(sjmisc)
+library(ggplot2)
+library(plyr)
+library(ggeffects)
+library(performance)
+library(jtools)
+library(R2MLwiN)
+library(lmtest)
+library(ggsci)
+library("ggpubr")
+
+```
+```{r}
+# v12 is full model variables
+#v17 is new demographic + popdens
+
+
+mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_3_SD_90_v6.csv")
+
+#set up dependent variables
+mob_vars$residential_difference <- as.numeric(mob_vars$residential_difference)
+mob_vars$workplaces_difference <- as.numeric(mob_vars$workplaces_difference)
+mob_vars$grocery_pharmacy_difference <- as.numeric(mob_vars$grocery_pharmacy_difference)
+mob_vars$parks_difference <- as.numeric(mob_vars$parks_difference)
+mob_vars$retail_difference <- as.numeric(mob_vars$retail_difference)
+mob_vars$transit_difference <- as.numeric(mob_vars$transit_difference)
+
+
+#set up independent variables
+
+#level 1 variables
+mob_vars$heat_temp_centered <- as.numeric(mob_vars$heat_temp_centered)
+mob_vars$temperature_2m_heat <- as.numeric(mob_vars$temperature_2m_heat)
+
+mob_vars$temp_diff <- as.numeric(mob_vars$temp_diff)
+
+mob_vars$stage_frac <- as.numeric(mob_vars$stage_frac)
+mob_vars$weekend <- as.factor(mob_vars$weekend)
+
+#level 2 variables
+mob_vars$first_annual_hw <- as.factor(mob_vars$first_annual_hw)
+
+mob_vars$heatwave_dur <- as.factor(mob_vars$heatwave_dur)
+mob_vars$year <- as.factor(mob_vars$year)
+
+
+#level 3 variables
+mob_vars$temperature_2m_winter <- as.numeric(mob_vars$temperature_2m_winter) - 4
+mob_vars$state <- as.factor(mob_vars$state)
+mob_vars$state <- relevel(factor(mob_vars$state), "California")
+mob_vars$coast_binary <- as.factor(mob_vars$coast_binary)
+mob_vars$income_dec <- as.numeric(mob_vars$income_dec)
+mob_vars$over65_dec <-  as.numeric(mob_vars$over65_dec)
+mob_vars$popdens_dec <-  as.numeric(mob_vars$popdens_dec)
+mob_vars$nonwhite_dec <-  as.numeric(mob_vars$nonwhite_dec)
+
+mu <- ddply(mob_vars, "state", summarise, grp.mean=mean(temperature_2m_heat))
+
+clean_nw = st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/nw_clean_shape/nw_clean_shape_trim.shp')
+nw_map <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/state_maps/state_maps_clean.shp')
+location_temps <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/state_maps/location_temps.shp')
+```
+
+```{r}
+
+mob_vars$state = factor(mob_vars$state, levels=c('British Columbia','Washington','Oregon','California'))
+
+
+p1 <- ggplot(mob_vars, aes(temperature_2m_heat, color=state)) + 
+  geom_density(aes(y = ..density..), bw = 2) + 
+     geom_vline(data=mu, aes(xintercept=grp.mean, color=state),
+             linetype="dashed", size=0.5) + 
+  labs(x="Heat wave temperature (C)", y = "Standardized frequency") + 
+  theme(legend.title=element_blank()) + 
+    scale_color_lancet() +
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p1
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/heatwave_dist_states_v6.pdf")
+
+```
+```{r}
+regression <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/date_heat_v3.csv',)
+names(regression) <- regression[1,]
+regression <- regression[-1,]
+regression$date_diff <- as.numeric(regression$date_diff)
+
+
+p1 <- ggplot(regression, aes(x=date_diff)) + 
+    geom_histogram() + 
+    scale_fill_lancet() + 
+  labs(y = "Count", x="Days between heat and control day", color="") +
+  scale_color_lancet()+
+ scale_x_continuous(limits = c(0,64),
+                     breaks = seq(0,64, 7)) +
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p1
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/date_diff_v2.png")
+
+```
+
+```{r}
+year_describe <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/year_describe_v4.csv')
+year_describe$value <- as.numeric(year_describe$value)
+year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+
+
+year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+year_describe$variable = factor(year_describe$variable, levels=c('residential_difference', 'workplaces_difference','transit_difference','grocer_pharm_difference', 'retail_difference', 'parks_difference' ))
+
+
+p1 <- ggplot(filter(year_describe, variable == c('residential_difference')), aes(x=value)) + 
+    geom_histogram() + 
+    scale_fill_lancet() + 
+  labs(y = "Count", x="", color="Province/State") +
+  ggtitle("Time in residence") +
+  scale_y_continuous(limits = c(0,1900)) +
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p2 <- ggplot(filter(year_describe, variable == c('workplaces_difference')), aes(x=value)) + 
+    geom_histogram() +
+    scale_fill_lancet() + 
+  labs(y = "", x="Heat-control % change", color="Province/State") +
+    ggtitle("Workplace visitation") +
+    scale_y_continuous(limits = c(0,1900)) +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p3 <- ggplot(filter(year_describe, variable == c('transit_difference')), aes(x=value)) + 
+    geom_histogram() +
+    scale_fill_lancet() + 
+  labs(y = "", x="", color="Province/State") +
+    ggtitle("Transit usage") +
+  scale_y_continuous(limits = c(0,1900)) +
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p4 <- ggplot(filter(year_describe, variable == c('grocer_pharm_difference')), aes(x=value)) + 
+    geom_histogram() +
+    scale_fill_lancet() + 
+  labs(y = "Count", x="", color="Province/State") +
+    ggtitle("Groc./pharm. visitation") +
+  scale_y_continuous(limits = c(0,1900)) +
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p5 <- ggplot(filter(year_describe, variable == c('retail_difference')), aes(x=value)) + 
+    geom_histogram() +
+    scale_fill_lancet() + 
+  labs(y = "", x="Heat-control % change", color="Province/State") +
+    ggtitle("Retail/Rec. visitation") +
+  scale_y_continuous(limits = c(0,1900)) +
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p6 <- ggplot(filter(year_describe, variable == c('parks_difference')), aes(x=value)) + 
+    geom_histogram() +
+    scale_fill_lancet() + 
+  labs(y = "", x="", color="Province/State") +
+    ggtitle("Parks visitation") +
+  scale_y_continuous(limits = c(0,1900)) +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+ggarrange(p1, p2, p3, p4, p5, p6, common.legend = TRUE, align = "hv", labels = c("A", "B", "C", "D", "E", "F"))
+
+
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/variable_dist_v6.pdf")
+```
+
+
+```{r}
+year_describe <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/year_describe_v4.csv')
+year_describe$value <- as.numeric(year_describe$value)
+year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+
+
+year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+year_describe$variable = factor(year_describe$variable, levels=c('residential_difference', 'workplaces_difference','transit_difference','grocer_pharm_difference', 'retail_difference', 'parks_difference' ))
+
+
+p1 <- ggplot(filter(year_describe, variable == c('residential_difference')), aes(x=year, y=value )) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "% change", x="", color="Province/State") +
+  ggtitle("Time in residence") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p2 <- ggplot(filter(year_describe, variable == c('workplaces_difference')), aes(x=year, y=value)) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "", x="Year", color="Province/State") +
+    ggtitle("Workplace visitation") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p3 <- ggplot(filter(year_describe, variable == c('transit_difference')), aes(x=year, y=value)) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "", x="", color="Province/State") +
+    ggtitle("Transit usage") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p4 <- ggplot(filter(year_describe, variable == c('grocer_pharm_difference')), aes(x=year, y=value)) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "% change", x="", color="Province/State") +
+    ggtitle("Groc./pharm. visitation") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p5 <- ggplot(filter(year_describe, variable == c('retail_difference')), aes(x=year, y=value)) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "", x="Year", color="Province/State") +
+    ggtitle("Retail/Rec. visitation") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p6 <- ggplot(filter(year_describe, variable == c('parks_difference')), aes(x=year, y=value)) + 
+    geom_boxplot(outlier.size = 0.01) + 
+    scale_fill_lancet() + 
+  labs(y = "", x="", color="Province/State") +
+    ggtitle("Parks visitation") +
+
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+ggarrange(p1, p2, p3, p4, p5, p6, common.legend = TRUE, labels = c("A", "B", "C", "D", "E", "F"))
+
+
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/state_year_split_v8.pdf")
+
+```
+
+
+
+```{r}
+year_describe <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/scatterplot_v5.csv')
+year_describe$value <- as.numeric(year_describe$value)
+year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+year_describe$temperature_2m_heat <- as.numeric(year_describe$temperature_2m_heat )
+year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+year_describe$variable = factor(year_describe$variable, levels=c('residential_difference','workplaces_difference','transit_difference','grocer_pharm_difference', 'parks_difference', 'retail_difference'))
+
+year_describe$value <- as.numeric(year_describe$value )
+
+
+
+p1 <- ggplot(filter(year_describe, variable == c('residential_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+      ggtitle("Time in residence") +
+labs(x="", y = "% change", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+p2 <- ggplot(filter(year_describe, variable == c('workplaces_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+        ggtitle("Workplaces visitation") +
+
+labs(x="Heat wave temperature (C)", y = "Heat wave % change", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p3 <- ggplot(filter(year_describe, variable == c('transit_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+        ggtitle("Transit visitation") +
+
+labs(x="", y = "Heat wave % change", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p4 <- ggplot(filter(year_describe, variable == c('grocer_pharm_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+        ggtitle("Groc./Pharm. visitation") +
+
+labs(x="", y = "% change", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p5 <- ggplot(filter(year_describe, variable == c('retail_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+          ggtitle("Retail/Rec. visitation") +
+
+labs(x="Heat wave temperature (C)", y = "", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p6 <- ggplot(filter(year_describe, variable == c('parks_difference')), aes(x=temperature_2m_heat, y=value, color=state)) + 
+  #geom_point(alpha=0.00, size=0.0)+
+  geom_smooth(method='lm', se=FALSE, size=1.1) + 
+          ggtitle("Parks visitation") +
+
+labs(x="", y = "", color="Province/State") + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+ggarrange(p1, p2, p3, p4, p5, p6, common.legend = TRUE, labels = c("A", "B", "C", "D", "E", "F"))
+
+
+
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/state_mob_scatter_v5.pdf")
+```
+
+```{r}
+year_describe <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/scatterplot_v2.csv')
+year_describe$value <- as.numeric(year_describe$value)
+year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+year_describe$temperature_2m_heat <- as.numeric(year_describe$temperature_2m_heat )
+year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+year_describe$variable = factor(year_describe$variable, levels=c('workplaces_difference','residential_difference','transit_difference','grocer_pharm_difference', 'parks_difference', 'retail_difference'))
+
+year_describe$value <- as.numeric(year_describe$value )
+
+
+p1 <- ggplot(year_describe, aes(x=value, group=variable)) + 
+  geom_boxplot()   
+
+p1
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/variable_dist.pdf")
+```
+```{r}
+year_describe <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/scatterplot_v2.csv')
+year_describe$value <- as.numeric(year_describe$value)
+year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+year_describe$temperature_2m_heat <- as.numeric(year_describe$temperature_2m_heat )
+year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+year_describe$variable = factor(year_describe$variable, levels=c('workplaces_difference','residential_difference','transit_difference','grocer_pharm_difference', 'parks_difference', 'retail_difference'))
+
+year_describe$value <- as.numeric(year_describe$value )
+
+
+p1 <- ggplot(year_describe, aes(x=value, y=variable), color='red') + 
+  geom_histogram() + 
+  # facet_wrap(~variable, scales='free') + 
+  labs(x="Heat wave % Mobility Change", y, color="Province/State") + 
+   theme(legend.position="none")
+
+p1
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/variable_dist.pdf")
+```
+
+```{r}
+```
+
+```{r}
+data <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/reg_plots/data_v3.csv')
+data$change <- as.numeric(data$change)
+data$temp <- as.numeric(data$temp)
+data$state = factor(data$state, levels=c('British Columbia','Washington','Oregon','California'))
+data$response = factor(data$response, levels=c('residential','workplaces','transit','grocery_pharmacy', 'retail', 'parks'))
+#year_describe$value <- as.numeric(year_describe$value )
+
+
+p1 <- ggplot(filter(data, response == c('residential')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="", y = "% change", color="Province/State") + 
+ggtitle("Time in residence") +
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p2 <- ggplot(filter(data, response == c('workplaces')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="Heat wave temperature (C)", y = "", color="Province/State") + 
+  ggtitle("Workplace visitation") +
+
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p3 <- ggplot(filter(data, response == c('transit')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="", y = "", color="Province/State") + 
+  ggtitle("Transit usage") +
+
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p4 <- ggplot(filter(data, response == c('grocery_pharmacy')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="", y = "% change", color="Province/State") + 
+  ggtitle("Groc./pharm. visitation") +
+
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p5 <- ggplot(filter(data, response == c('retail')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="Heat wave temperature (C)", y = "", color="Province/State") + 
+  ggtitle("Retail/Rec. visitation") +
+
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p6 <- ggplot(filter(data, response == c('parks')), aes(x=temp, y=change, color=state)) + 
+  geom_smooth(method='lm', se=FALSE, size=0.5) + 
+labs(x="", y = "", color="Province/State") + 
+  ggtitle("Parks visitation") +
+
+geom_hline(aes(yintercept=0),
+             linetype="dashed", size=0.2) + 
+  scale_color_lancet()+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+ggarrange(p1, p2, p3, p4, p5, p6, common.legend = TRUE, labels = c("A", "B", "C", "D", "E", "F"))
+ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/reg_plots_v6.pdf")
+```
+```{r}
+regression <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/coefs/coefs_v2.csv')
+regression$coef <- as.numeric(regression$coef)
+regression$p <- factor(regression$p)
+regression$response <- as.character(regression$response)
+regression$response <- factor(regression$response, levels=c('parks','retail','grocery/pharmacy','transit', 'workplaces', 'residential'))
+
+regression$p <- factor(regression$p, levels=c('TRUE','FALSE'))
+p2 <- ggplot(filter(regression, variable == c('state')), aes(x=coef, y=response, alpha=p)) + 
+  geom_point(size=2) + 
+  labs(x="coefficient", y = "response", alpha="") + 
+  ggtitle("Heat-control temp. diff. (p<0.01)") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  #scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  #geom_bar(stat="identity",width=0.03, size=0, aes(fill=c,colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25), guide='none') + 
+  facet_grid(cols = vars(hci)) +
+  
+  #scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  #scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  #guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+
+p2
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/temp_diff_v3.pdf")
+```
+
+```{r}
+regression <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/coefs/coefs_v2.csv')
+regression$coef <- as.numeric(regression$coef)
+regression$p <- factor(regression$p)
+regression$response <- as.character(regression$response)
+regression$response <- factor(regression$response, levels=c('parks','retail','grocery/pharmacy','transit', 'workplaces', 'residential'))
+
+regression$p <- factor(regression$p, levels=c('TRUE','FALSE'))
+p2 <- ggplot(filter(regression, variable == c('temp_diff')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=2) + 
+  labs(x="coefficient", y = "response", alpha="") + 
+  ggtitle("Heat-control temp. diff. (p<0.01)") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.03, size=0, aes(fill=c,colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25), guide='none') + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+
+p2
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/temp_diff_v4.pdf")
+
+```
+
+```{r}
+level_order <- c('residential','workplaces','transit','grocery_pharmacy', 'retail', 'parks')
+
+
+
+  
+p2
+```
+
+```{r}
+regression <- st_read('/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/coefs/coefs_v2.csv')
+regression$coef <- as.numeric(regression$coef)
+regression$p <- factor(regression$p)
+regression$response <- as.character(regression$response)
+regression$response <- factor(regression$response, levels=c('parks','retail','grocery/pharmacy','transit', 'workplaces', 'residential'))
+
+regression$p <- factor(regression$p, levels=c('p<0.1','p>=0.1'))
+
+#year_describe[year_describe == 'grocery_pharmacy_difference'] <- 'grocer_pharm_difference'
+#year_describe$temperature_2m_heat <- as.numeric(year_describe$temperature_2m_heat )
+#year_describe$state = factor(year_describe$state, levels=c('British Columbia','Washington','Oregon','California'))
+#regression$response = factor(year_describe$variable,levels=c('residential_difference','workplaces_difference','transit_difference','grocer_pharm_difference', 'parks_difference', 'retail_difference'))
+ 
+
+p2 <- ggplot(filter(regression, variable == c('2021')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="", y = "response", alpha="Significance: ") + 
+  ggtitle("2021") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c,colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p3 <- ggplot(filter(regression, variable == c('2022')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="", y = "", alpha="Significance: ") + 
+  ggtitle("2022") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+p4 <- ggplot(filter(regression, variable == c('june_hw')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="", y = "", alpha="Significance: ") + 
+  ggtitle("June") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p5 <- ggplot(filter(regression, variable == c('heatwave_dur')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="coefficient", y = "response", alpha="Significance: ") + 
+  ggtitle(">= 5 days") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c,colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+p6 <- ggplot(filter(regression, variable == c('stage')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="coefficient", y = "", alpha="Significance: ") + 
+  ggtitle("Stage %") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p7 <- ggplot(filter(regression, variable == c('weekend')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="coefficient", y = "", alpha="Significance: ") + 
+  ggtitle("Weekend") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+p8 <- ggplot(filter(regression, variable == c('coast')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="", y = "response", alpha="Significance: ") + 
+  ggtitle("Coast") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p9 <- ggplot(filter(regression, variable == c('popdens')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="", y = "", alpha="Significance: ") + 
+  ggtitle("Pop. dens decile") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c,colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+
+
+p10 <- ggplot(filter(regression, variable == c('nonwhite')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="coefficient", y = "response", alpha="Significance: ") + 
+  ggtitle("Non-white decile") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+p11 <- ggplot(filter(regression, variable == c('over_65')), aes(x=coef, y=response, alpha=p, color=c)) + 
+  geom_point(size=1) + 
+  labs(x="coefficient", y = "", alpha="Significance: ") + 
+  ggtitle("Over 65 decile") +
+  geom_vline(aes(xintercept=0), linetype="dashed", size=0.5) + 
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  geom_bar(stat="identity",width=0.1, size=0, aes(alpha=p, fill=c, colour=NA,size=0)) +
+  scale_alpha_discrete(range = c(1, 0.25)) + 
+  scale_fill_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+  scale_color_manual(values = c('green' = 'darkgreen', 'red' = 'red')) +
+
+  guides(color=FALSE, fill=FALSE)+
+  theme_bw()+ 
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+
+ggarrange(p2, p3, p4, p5, p6, p7, hjust=-4, common.legend = TRUE, labels = c("A", "B", "C", "D", "E", "F"))
+
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/temporal_coefs_v5.png")
+
+
+ggarrange(p8, p9, p10, p11, hjust=-7, common.legend = TRUE, labels = c("A", "B", "C", "D"))
+#ggsave("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/results/plots/context_coefs_v5.png")
+
+
+
+
+```
+
