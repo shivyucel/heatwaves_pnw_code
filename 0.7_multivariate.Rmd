@@ -31,7 +31,7 @@ options(MLwiN_path="/Users/shivyucel/Documents/projects/DPhil/Code_Data/mlwin/ml
 ```{r}
 # v12 is full model variables
 #v17 is new demographic + popdens
-mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90_v1.csv")
+mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_95_v1.csv")
 
 #set up dependent variables
 mob_vars$residential_difference <- as.numeric(mob_vars$residential_difference)
@@ -100,6 +100,12 @@ model_26 <- runMLwiN(c(residential_difference, workplaces_difference, transit_di
                     data = mob_vars, D = "Multivariate Normal", estoptions = list(sort.force=TRUE, resi.store=TRUE, maxiter = 30))
 
 ```
+
+```{r}
+summary(model_26)
+
+```
+
 ```{r}
 
 summary(model_26)
