@@ -1,6 +1,6 @@
 # Pacific Northwest heatwave activity change code
 
-This GitHub repository contains code for (in-text citation), using a simultaneous modelling approach to uncover activity changes during heatwaves.
+This GitHub repository contains code for (in-text citation), using a simultaneous modelling approach to examine activity changes during heatwaves.
 
 # Overview 
 The steps presented in the repository are as follows:
@@ -15,9 +15,10 @@ The steps presented in the repository are as follows:
 |0.6_feature_eng_2.ipynb|Finalize covariates and produce modelling-ready data set|
 |0.7_multivariate.nb.html|Use R2MlwiN to produce unconditional means and full model|
 
+Notes:
+* Additional files include detect_heatwave.py, which modifies code from Hobday et. al (2016).
 
-Additional files include heatwave_1.py, which is a modified version of the package of Hobday et. al (2016)
-
+* Multivariate multi-level model is run using R2MLwiNs
 
 > Hobday, A.J. et al. (2016), A hierarchical approach to defining marine heatwaves, Progress in Oceanography, 141, pp. 227-238. https://doi.org/10.1016/j.pocean.2015.12.014 
 

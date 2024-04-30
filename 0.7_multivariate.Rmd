@@ -31,7 +31,7 @@ options(MLwiN_path="/Users/shivyucel/Documents/projects/DPhil/Code_Data/mlwin/ml
 ```{r}
 # v12 is full model variables
 #v17 is new demographic + popdens
-mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_95_v1.csv")
+mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/final_multivariate_clean_90_v1.csv")
 
 #set up dependent variables
 mob_vars$residential_difference <- as.numeric(mob_vars$residential_difference)
@@ -93,7 +93,7 @@ model_24
 ```{r}
 
 model_26 <- runMLwiN(c(residential_difference, workplaces_difference, transit_difference, grocery_pharmacy_difference, retail_difference, parks_difference) ~ 1 
-                    + heat_temp_centered*state + temp_diff + stage_frac  + weekend 
+                    + heat_temp_centered*state + temp_disff + stage_frac  + weekend 
                     + factor(year) + factor(heatwave_dur) + factor(june_hw)
                     + factor(coast_binary) +  temperature_2m_winter:state + popdens_dec + income_dec + over65_dec + nonwhite_dec 
                     +   (1 | location) + ( 1| heat_ID) + (1|index), 

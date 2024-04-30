@@ -57,9 +57,7 @@ def detect(t, temp, pctile=90, minDuration=2):
 
 
 
-    # Time series of "True" when threshold is exceeded, "False" otherwise
-    ## LINE 212 edited to hard-code percentile across entire temperature range
-    
+    # Time series of "True" when threshold is exceeded, "False" otherwise    
     exceed_bool = temp - np.percentile(temp, pctile)
     exceed_bool[exceed_bool<=0] = False
     exceed_bool[exceed_bool>0] = True
