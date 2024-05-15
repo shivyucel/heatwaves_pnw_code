@@ -10,7 +10,7 @@ from datetime import date
 def detect(t, temp, pctile=90, minDuration=2):
     '''
     
-    Simplification of code produced for Hobday et al. (2016)'s paper on marine heat waves.
+    Simplification/modification of code produced for Hobday et al. (2016)'s paper on marine heat waves.
     
     
     
@@ -22,20 +22,20 @@ def detect(t, temp, pctile=90, minDuration=2):
     
     Outputs:
     
-      mhw     Detected heatwaves. Each key (following list) is a
+      hw     Detected heatwaves. Each key (following list) is a
               list of length N where N is the number of detected heatwaves:
  
 
-        'date_start'           Start date of MHW [datetime format]
-        'date_end'             End date of MHW [datetime format]
-        'duration'             Duration of MHW [days]
+        'date_start'           Start date of HW [datetime format]
+        'date_end'             End date of HW [datetime format]
+        'duration'             Duration of HW [days]
 
 
     Options:
 
       pctile                 Threshold percentile (%) for detection of extreme values
                              (DEFAULT = 90)
-      minDuration            Minimum duration for acceptance detected MHWs
+      minDuration            Minimum duration for acceptance detected HWs
                              (DEFAULT = 2 [days])
 
     Notes:
@@ -47,13 +47,13 @@ def detect(t, temp, pctile=90, minDuration=2):
     '''
 
     # Initialize heatwave output variable
-    mhw = {}
+    hw = {}
 
-    mhw['date_start'] = [] # datetime format
-    mhw['date_end'] = [] # datetime format
-    mhw['duration'] = [] # [days]
-    mhw['time_start'] = [] # [days]
-    mhw['time_end'] = [] # [days]
+    hw['date_start'] = [] # datetime format
+    hw['date_end'] = [] # datetime format
+    hw['duration'] = [] # [days]
+    hw['time_start'] = [] # [days]
+    hw['time_end'] = [] # [days]
 
 
 
@@ -68,22 +68,22 @@ def detect(t, temp, pctile=90, minDuration=2):
     # Find contiguous regions of exceed_bool = True
     events, n_events = ndimage.label(exceed_bool)
 
-    # Find all MHW events of duration >= minDuration
+    # Find all HW events of duration >= minDuration
     for ev in range(1,n_events+1):
         event_duration = (events == ev).sum()
         if event_duration < minDuration:
             continue
-        mhw['time_start'].append(t[np.where(events == ev)[0][0]])
-        mhw['time_end'].append(t[np.where(events == ev)[0][-1]])
+        hw['time_start'].append(t[np.where(events == ev)[0][0]])
+        hw['time_end'].append(t[np.where(events == ev)[0][-1]])
 
 
-    # Calculate marine heat wave properties
-    mhw['n_events'] = len(mhw['time_start'])
-    for ev in range(mhw['n_events']):
-        mhw['date_start'].append(date.fromordinal(mhw['time_start'][ev]))
-        mhw['date_end'].append(date.fromordinal(mhw['time_end'][ev]))
+    # Calculate heatwave start and end date
+    hw['n_events'] = len(hw['time_start'])
+    for ev in range(hw['n_events']):
+        hw['date_start'].append(date.fromordinal(hw['time_start'][ev]))
+        hw['date_end'].append(date.fromordinal(hw['time_end'][ev]))
 
 
 
-    return mhw
+    return hw
 

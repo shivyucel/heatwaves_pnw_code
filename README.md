@@ -7,6 +7,8 @@ The steps presented in the repository are as follows:
 
 |File                 |Description|
 |---------------------|-----------|
+|0.0_preprocess_temp.ipynb         |Process hourly temperature data to daily maximums|
+|0.05_identify_heatwaves.ipynb         |Identify heatwaves from ERA5 temperature data|
 |0.1_identify_heatwaves.ipynb         |Identify heatwaves from ERA5 temperature data|
 |0.2_identify_control_days.ipynb               |Implement control day algorithm|
 |0.3_merge_mobility_data.ipynb          |Merge Google mobility data and heatwave data across Pacific Northwest|
