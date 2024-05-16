@@ -8,7 +8,7 @@ The steps presented in the repository are as follows:
 |File                 |Description|
 |---------------------|-----------|
 |0.0_preprocess_temp.ipynb         |Process hourly temperature data to daily maximums|
-|0.05_identify_heatwaves.ipynb         |Identify heatwaves from ERA5 temperature data|
+|0.05_detect_heatwaves.py         |Script to detect heatwaves, modifies code from Hobday et. al (2016)|
 |0.1_identify_heatwaves.ipynb         |Identify heatwaves from ERA5 temperature data|
 |0.2_identify_control_days.ipynb               |Implement control day algorithm|
 |0.3_merge_mobility_data.ipynb          |Merge Google mobility data and heatwave data across Pacific Northwest|
@@ -18,7 +18,6 @@ The steps presented in the repository are as follows:
 |0.7_multivariate.nb.html|Use R2MlwiN to produce unconditional means and full model|
 
 Notes:
-* Additional files include detect_heatwave.py, which modifies code from Hobday et. al (2016).
 
 * Multivariate multi-level model is run using R2MLwiNs
 
