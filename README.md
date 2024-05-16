@@ -9,13 +9,14 @@ The steps presented in the repository are as follows:
 |---------------------|-----------|
 |0.0_preprocess_temp.ipynb         |Process hourly temperature data to daily maximums|
 |0.1_identify_heatwaves.ipynb         |Identify heatwaves from ERA5 temperature data|
-|0.15_detect_heatwaves.py         |Script to detect heatwaves (used above), modifies code from Hobday et. al (2016)|
 |0.2_identify_control_days.ipynb               |Implement control day algorithm|
 |0.3_merge_mobility_data.ipynb          |Merge Google mobility data and heatwave data across Pacific Northwest|
 |0.4_feature_eng_1.ipynb   |Construct initial response variables and basic co-variates|
 |0.5_merge_census.ipynb            |Merge socio-economic variables for each county|
 |0.6_feature_eng_2.ipynb|Finalize covariates and produce modelling-ready data set|
 |0.7_multivariate.nb.html|Use R2MlwiN to produce unconditional means and full model|
+|detect_heatwaves.py         |Script to detect heatwaves (used above), modifies code from Hobday et. al (2016)|
+
 
 Notes:
 
