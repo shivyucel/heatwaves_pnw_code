@@ -2,6 +2,8 @@
 
 This GitHub repository contains code for (in-text citation), using a simultaneous modelling approach to examine activity changes during heatwaves.
 
+Data set used in final modelling stage available here: https://doi.org/10.5281/zenodo.11199032
+
 # Overview 
 The steps presented in the repository are as follows:
 
