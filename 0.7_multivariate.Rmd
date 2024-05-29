@@ -54,14 +54,15 @@ mob_vars$weekend <- as.factor(mob_vars$weekend)
 #level 2 variables
 
 mob_vars$june_hw <- as.factor(mob_vars$june_hw)
-
-
 mob_vars$heatwave_dur <- as.factor(mob_vars$heatwave_dur)
 mob_vars$year <- as.factor(mob_vars$year)
 
 
 #level 3 variables
+
+#centre winter temperature for interaction term
 mob_vars$temperature_2m_winter <- as.numeric(mob_vars$temperature_2m_winter) - 4
+
 mob_vars$state <- as.factor(mob_vars$state)
 mob_vars$state <- relevel(factor(mob_vars$state), "California")
 mob_vars$coast_binary <- as.factor(mob_vars$coast_binary)
@@ -93,7 +94,7 @@ model_24
 ```{r}
 
 model_26 <- runMLwiN(c(residential_difference, workplaces_difference, transit_difference, grocery_pharmacy_difference, retail_difference, parks_difference) ~ 1 
-                    + heat_temp_centered*state + temp_disff + stage_frac  + weekend 
+                    + heat_temp_centered*state + temp_diff + stage_frac  + weekend 
                     + factor(year) + factor(heatwave_dur) + factor(june_hw)
                     + factor(coast_binary) +  temperature_2m_winter:state + popdens_dec + income_dec + over65_dec + nonwhite_dec 
                     +   (1 | location) + ( 1| heat_ID) + (1|index), 
@@ -101,16 +102,7 @@ model_26 <- runMLwiN(c(residential_difference, workplaces_difference, transit_di
 
 ```
 
-```{r}
-summary(model_26)
 
-```
-
-```{r}
-
-summary(model_26)
-
-```
 
 
 ```{r}
