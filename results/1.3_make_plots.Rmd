@@ -34,7 +34,7 @@ library("ggpubr")
 #v17 is new demographic + popdens
 
 
-mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/mobility_heat_dataset.csv")
+mob_vars <- st_read("/Users/shivyucel/Documents/projects/DPhil/Code_Data/data/mobility_heat/mobility_heat_dataset_update.csv")
 
 #set up dependent variables
 mob_vars$residential_difference <- as.numeric(mob_vars$residential_difference)
@@ -75,6 +75,8 @@ mob_vars$nonwhite_dec <-  as.numeric(mob_vars$nonwhite_dec)
 
 ```
 ```{r}
+mu <- ddply(mob_vars, "state", summarise, grp.mean=mean(temperature_2m_heat
+                                                        ))
 
 mob_vars$state = factor(mob_vars$state, levels=c('British Columbia','Washington','Oregon','California'))
 
@@ -129,7 +131,7 @@ p3 <- ggplot(filter(year_describe, variable == c('transit_difference')), aes(x=v
     geom_histogram() +
     scale_fill_lancet() + 
   labs(y = "", x="", color="State/Province") +
-    ggtitle("Transit usage") +
+    ggtitle("Transit visitation") +
   scale_y_continuous(limits = c(0,1900)) +
   scale_color_lancet()+
   theme_bw()+ 
@@ -149,7 +151,7 @@ p5 <- ggplot(filter(year_describe, variable == c('retail_difference')), aes(x=va
     geom_histogram() +
     scale_fill_lancet() + 
   labs(y = "", x="Heat-control % change", color="State/Province") +
-    ggtitle("Retail/Rec. visitation") +
+    ggtitle("Retail/rec. visitation") +
   scale_y_continuous(limits = c(0,1900)) +
   scale_color_lancet()+
   theme_bw()+ 
@@ -208,7 +210,7 @@ p3 <- ggplot(filter(year_describe, variable == c('transit_difference')), aes(x=y
     geom_boxplot(outlier.size = 0.01) + 
     scale_fill_lancet() + 
   labs(y = "", x="", color="Province/State") +
-    ggtitle("Transit usage") +
+    ggtitle("Transit visitation") +
 
   scale_color_lancet()+
   theme_bw()+ 
