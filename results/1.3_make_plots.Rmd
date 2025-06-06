@@ -384,7 +384,7 @@ geom_hline(aes(yintercept=0),
 p4 <- ggplot(filter(data, response == c('grocery_pharmacy')), aes(x=temp, y=change, color=state)) + 
   geom_smooth(method='lm', se=FALSE, size=0.5) + 
 labs(x="Heatwave temperature (C)", y = "% change", color="State/Province") + 
-  ggtitle("Grocery/pharm. visitation") +
+  ggtitle("Groc./pharm. visitation") +
 
 geom_hline(aes(yintercept=0),
              linetype="dashed", size=0.2) + 

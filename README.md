@@ -16,7 +16,7 @@ The steps presented in the repository are as follows:
 |0.4_feature_eng_1.ipynb   |Construct initial response variables and basic co-variates|
 |0.5_merge_census.ipynb            |Merge socio-economic variables for each county|
 |0.6_feature_eng_2.ipynb|Finalize covariates and produce modelling-ready data set|
-|0.7_multivariate.nb.html|Use R2MlwiN to produce unconditional means and full model|
+|0.7_multivariate.Rmb|Use R2MlwiN to produce unconditional means and full model|
 |detect_heatwaves.py         |Script to detect heatwaves (used above), modifies code from Hobday et. al (2016)|
 
 

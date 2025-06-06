@@ -4,7 +4,6 @@ output: html_notebook
 ---
 # Load Packages
 ```{r}
-library(tidycensus)
 library(tidyverse)
 library(sf)
 library(sjPlot)
@@ -18,7 +17,6 @@ library(ggplot2)
 
 library(ggeffects)
 library(performance)
-library(jtools)
 library(R2MLwiN)
 library(lmtest)
 ## Change path to MLwiN executable as appropriate:
@@ -80,6 +78,14 @@ mob_vars$nonwhite_dec <-  as.numeric(mob_vars$nonwhite_dec)
 model_24 <- runMLwiN(c(residential_difference, workplaces_difference, transit_difference, grocery_pharmacy_difference, retail_difference, parks_difference) ~ 1 +
                     + (1 | location) + ( 1| heat_ID) + (1|index),
                     data = mob_vars, D = "Multivariate Normal", estoptions = list(sort.ignore=TRUE, resi.store=TRUE) )
+```
+
+```{r}
+model_24
+```
+
+```{r}
+model_24
 ```
 
 
