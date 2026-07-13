@@ -1,6 +1,6 @@
 # Pacific Northwest heatwave activity change code
 
-This GitHub repository contains code for (Yücel & Schwanen, 2024), using a simultaneous modelling approach to examine activity changes during heatwaves.
+This GitHub repository contains code for (Yücel & Schwanen, 2025), using a simultaneous modelling approach to examine activity changes during heatwaves.
 
 Data set used in final modelling stage available here: https://doi.org/10.5281/zenodo.11199032
 
@@ -22,9 +22,9 @@ The steps presented in the repository are as follows:
 
 Notes:
 
-* Multivariate multi-level model is run using R2MLwiNs
+* Multivariate multi-level model is run using R2MLwiN
 
-> Yücel, S. G., & Schwanen, T. (2024, May 21). Heatwave adaptation conditioned by everyday life: Analyzing interacting changes to daily activities during Pacific Northwest summers. https://doi.org/10.31235/osf.io/mn58e
+> Yücel, S. G., & Schwanen, T. (2025). Heatwave adaptation conditioned by everyday life: Analysing interacting changes to daily activities during Pacific Northwest summers. Global Environmental Change, 94, 103026. https://doi.org/10.1016/j.gloenvcha.2025.103026
 
 > Hobday, A.J. et al. (2016), A hierarchical approach to defining marine heatwaves, Progress in Oceanography, 141, pp. 227-238. https://doi.org/10.1016/j.pocean.2015.12.014 
 
